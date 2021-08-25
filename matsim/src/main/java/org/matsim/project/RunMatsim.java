@@ -30,6 +30,9 @@ import org.matsim.core.controler.OutputDirectoryHierarchy;
 import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.vis.otfvis.OTFVisConfigGroup;
+
+import java.utils.Exception;
+
 /**
  * @author nagel
  *
@@ -39,7 +42,7 @@ public class RunMatsim{
 	public static void main(String[] args) {
 		Config config;
 		if ( args==null || args.length==0 || args[0]==null ){
-			config = ConfigUtils.loadConfig( "scenarios/test-prague/config-prague.xml" );
+			throw new Exception("Cannot run without arguments.\nExpected argument: [path to config file]");
 		} else {
 			config = ConfigUtils.loadConfig( args );
 		}
