@@ -31,18 +31,17 @@ import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.vis.otfvis.OTFVisConfigGroup;
 
-import java.utils.Exception;
-
 /**
  * @author nagel
  *
  */
 public class RunMatsim{
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		Config config;
+
 		if ( args==null || args.length==0 || args[0]==null ){
-			throw new Exception("Cannot run without arguments.\nExpected argument: [path to config file]");
+			config = null;
 		} else {
 			config = ConfigUtils.loadConfig( args );
 		}
