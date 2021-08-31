@@ -1,5 +1,5 @@
 package org.matsim.metacity;
 
-public Class CreateMultiModalNetwork{
+public class CreateMultiModalNetwork{
 
 }

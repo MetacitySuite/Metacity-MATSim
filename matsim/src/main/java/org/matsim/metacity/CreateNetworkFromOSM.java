@@ -38,7 +38,7 @@ import java.util.Set;
 
 public class CreateNetworkFromOSM {
 
-    CreateNetworkFromOSM(String dir )
+    //CreateNetworkFromOSM(String dir )
 
     private static final String dir = "/home/metakocour/IdeaProjects/matsim-example-project/scenarios/test-prague/";
 
