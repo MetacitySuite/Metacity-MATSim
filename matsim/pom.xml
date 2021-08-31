@@ -3,15 +3,16 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.matsim</groupId>
-	<artifactId>matsim-example-project</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>matsim</artifactId>
+	<version>0.0.1</version>
 
-	<name>MATSim example project</name>
-	<description>MATSim example project</description>
+	<name>MATSim project</name>
+	<description>MATSim project</description>
 
 	<properties>
 		<!-- release -->
 		<matsim.version>13.0</matsim.version>
+		<pt2matsim.version>21.6</pt2matsim.version>
 
 		<!-- smapshot -->
 		<!--<matsim.version>14.0-SNAPSHOT</matsim.version>-->
@@ -27,7 +28,12 @@
 
 	<repositories>
 	  <!--Note that in general repositories are not transitive, so they need to be repeated at every level where needed.-->
-		<repository>
+		<!-- <repository>
+			<id>mylibid</id>
+			<url>file://${project.basedir}/lib</url>
+		</repository> -->
+
+	 	 <repository>
 			<!-- Geotools is not on Maven central -->
 			<id>osgeo</id>
 			<name>Geotools repository</name>
@@ -80,18 +86,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!--dependencies from here to where stated below are added as a service; they can be removed if you don't need them-->
-		<!--to get ExamplesUtils: -->
-		<dependency>
-			<groupId>org.matsim</groupId>
-			<artifactId>matsim-examples</artifactId>
-			<version>${matsim.version}</version>
-<!--			<scope>test</scope>-->
-<!--			I think that having it in the "main" scope is acceptable for a "leaf" project, and makes life easier.  move the-->
-<!--			matsim-examples dependency into "test" scope if you want to make other projects dependent on your this project here. kai,-->
-<!--			jan'21-->
-		</dependency>
-
 		<!--some contribs:-->
 		<dependency>
 			<groupId>org.matsim.contrib</groupId>
@@ -131,7 +125,7 @@
 		<dependency>
 			<groupId>org.matsim</groupId>
 			<artifactId>pt2matsim</artifactId>
-			<version>21.6</version>
+			<version>${pt2matsim.version}</version>
 		</dependency>
 		<!--Dependencies from where stated above to here are added as a service; they can be removed if you don't need them-->
 
