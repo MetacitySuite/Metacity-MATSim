@@ -21,10 +21,10 @@ import org.matsim.core.utils.geometry.CoordUtils;
 import java.util.*;
 
 public class CreateRandomDemand {
-    private static final String dir = "/home/metakocour/IdeaProjects/matsim-example-project/scenarios/test-prague/";
+    private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
     private static final String matsimConfigFile = dir + "config-prague.xml";
-    private static final String populationFile = dir + "test-population-500k.xml";
-    private static final int demandSize = 500000;
+    private static final String populationFile = dir + "input/test-population-150k.xml";
+    private static final int demandSize = 150000;
     private static final double radius = 5000;
 
     private static final Config config = ConfigUtils.loadConfig(matsimConfigFile);
