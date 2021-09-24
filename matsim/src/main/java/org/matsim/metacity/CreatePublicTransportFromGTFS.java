@@ -1,18 +1,18 @@
 package org.matsim.metacity;
 
-import org.matsim.api.core.v01.Scenario;
-import org.matsim.api.core.v01.TransportMode;
-import org.matsim.api.core.v01.network.Network;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
 import org.matsim.core.network.algorithms.NetworkCleaner;
 import org.matsim.core.scenario.ScenarioUtils;
+import org.matsim.api.core.v01.Scenario;
+import org.matsim.api.core.v01.TransportMode;
+import org.matsim.api.core.v01.network.Network;
 import org.matsim.pt.transitSchedule.api.TransitSchedule;
+import org.matsim.pt.utils.TransitScheduleValidator;
 import org.matsim.pt2matsim.run.Gtfs2TransitSchedule;
 import org.matsim.pt2matsim.config.PublicTransitMappingConfigGroup;
 import org.matsim.pt2matsim.run.PublicTransitMapper;
-import org.matsim.pt.utils.TransitScheduleValidator;
 
 import java.util.Set;
 import java.util.HashSet;
@@ -24,27 +24,12 @@ import java.util.HashSet;
  */
 
 public class CreatePublicTransportFromGTFS {
-    private static final String dir = "/home/metakocour/IdeaProjects/matsim-example-project/scenarios/test-prague/";
+    public static void ScheduleFromGTFS(String dataDir, String sampleDay, String epsg, String unmappedScheduleFile, String transitVehicleFile){
+        //get unmapped PT schedule from GTFS
+        Gtfs2TransitSchedule.run(dataDir, sampleDay, epsg, unmappedScheduleFile, transitVehicleFile);
+    }
 
-    //input files
-    private static final String GTFSDir = dir + "prague-data/PID_GTFS";
-    private static final String fullNetworkFile = dir + "multi-network-prague.xml.gz";
-
-    //intermediate output
-    private static final String mappingConfigFile = dir + "01_ptmappingconfig.xml";
-    private static final String unmappedScheduleFile = dir + "01_transitSchedule.xml.gz";
-    private static final String transitVehicleFile = dir + "01_transitVehicles.xml.gz";
-
-    //output files
-    private static final String mappedScheduleFile = dir + "transitSchedule2.xml.gz";
-    private static final String mappedNetworkFile = dir + "pt-network-prague2.xml.gz";
-
-
-    private static final String matsimConfigFile = dir + "config-prague.xml";
-    private static final String sampleDay = "20210723";
-
-
-    public static void PrepareMappingConfig(){
+    public static void PrepareMappingConfig(String fullNetworkFile, String unmappedScheduleFile, String mappedScheduleFile, String mappedNetworkFile, String mappingConfigFile){
         //create a mapping config file
         Config config = ConfigUtils.createConfig();
         Set<String> toRemove = new HashSet<>(config.getModules().keySet());
@@ -59,7 +44,7 @@ public class CreatePublicTransportFromGTFS {
         //add tram transportModeAssignment manually
     }
 
-    public static void TransitSchedulePlausibilityCheck(){
+    public static void TransitSchedulePlausibilityCheck(String matsimConfigFile){
         Config config = ConfigUtils.loadConfig(matsimConfigFile);
         Scenario scenario = ScenarioUtils.loadScenario(config);
         Network network = scenario.getNetwork();
@@ -69,21 +54,15 @@ public class CreatePublicTransportFromGTFS {
             System.out.print("(warning) Invalid transit schedule");
         else
             System.out.print("(info) Valid transit schedule");
-
-
     }
 
-    public static void main(String[] args) {
-        //get unmapped PT schedule from GTFS
-        //Gtfs2TransitSchedule.run(GTFSDir, sampleDay, "EPSG:25832", unmappedScheduleFile, transitVehicleFile);
-
-        //mapping the PT schedule to the existing network
-        //PrepareMappingConfig(); //prepare mapping config, mostly copied from org.matsim.pt2matsim.run.CreateDefaultPTMapperConfig
-
+    public static void MapGTFS2Network(String mappingConfigFile, String matsimConfigFile){
         //do the mapping according to pt mapping config
         PublicTransitMapper.run(mappingConfigFile);
 
         //check plausibility
-        TransitSchedulePlausibilityCheck();
+        TransitSchedulePlausibilityCheck(matsimConfigFile);
     }
+
+
 }

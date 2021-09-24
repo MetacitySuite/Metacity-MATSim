@@ -12,7 +12,8 @@
 	<properties>
 		<!-- release -->
 		<matsim.version>13.0</matsim.version>
-		<pt2matsim.version>21.6</pt2matsim.version>
+		<pt2matsim.version>21.8</pt2matsim.version>
+		<geotools.version>24.2</geotools.version>
 
 		<!-- smapshot -->
 		<!--<matsim.version>14.0-SNAPSHOT</matsim.version>-->
@@ -127,6 +128,19 @@
 			<artifactId>pt2matsim</artifactId>
 			<version>${pt2matsim.version}</version>
 		</dependency>
+
+		<!--
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-referencing</artifactId>
+			<version>${geotools.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-epsg-hsql</artifactId>
+			<version>${geotools.version}</version>
+		</dependency>
+		-->
 		<!--Dependencies from where stated above to here are added as a service; they can be removed if you don't need them-->
 
 	</dependencies>

@@ -13,11 +13,11 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/test-population-500k.xml.gz" />
+		<param name="inputPlansFile" value="./input/test-population-150k.xml" />
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="./output/pop500k-eh2-qsim2" />
+		<param name="outputDirectory" value="./output/pop100k-eh2-qsim2" />
 		<param name="firstIteration" value="0" />
 		<param name="lastIteration" value="10" />
 		<param name="compressionType" value="gzip" />
@@ -39,8 +39,8 @@
 
 	<module name="transit" >
 		<param name="useTransit" value="true" />
-		<param name="transitScheduleFile" value="./input/transitSchedule.xml.gz" />
-		<param name="vehiclesFile" value="./input/01_transitVehicles.xml.gz" />
+		<param name="transitScheduleFile" value="./input/transit-schedule.xml.gz" />
+		<param name="vehiclesFile" value="./input/01-transit-vehicles.xml.gz" />
 		<param name="transitModes" value="pt" />
 	</module>
 
@@ -103,14 +103,6 @@
 		<param name="ModuleProbability_2" value="0.1" />
 		<param name="Module_2" value="ReRoute" />
 
-		<param name="ModuleProbability_3" value ="0.1" />
-		<param name="Module_3" value="ChangeMode" />
-	</module>
-
-	<module name="changeMode">
-		<!-- provide a comma-separated list of leg modes -->
-		<param name="modes" value="car,pt" />
-		<param name="ignoreCarAvailability" value="false" />
 	</module>
 
 </config>
