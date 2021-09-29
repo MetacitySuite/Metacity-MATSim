@@ -1,4 +1,4 @@
-## Metacity-MATSim
+## Metacity ‒ MATSim
 
 Metacity uses agent- and activity-based transport simulation framework [MATSim][1].
 
