@@ -21,10 +21,10 @@ import org.matsim.core.utils.geometry.CoordUtils;
 import java.util.*;
 
 public class CreateRandomPlans {
-    private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
+    private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files-test/";
     private static final String matsimConfigFile = dir + "config-prague.xml";
-    private static final String populationFile = dir + "input/test-population-150k.xml";
-    private static final int demandSize = 150000;
+    private static final String populationFile = dir + "input/test-population-2.xml";
+    private static final int demandSize = 2;
     private static final double radius = 5000;
 
     private static final Config config = ConfigUtils.loadConfig(matsimConfigFile);
@@ -57,11 +57,17 @@ public class CreateRandomPlans {
             //home activity
             Coord homeCoord = GetRandomNodeInNetwork().getCoord();
 
+            //transport mode
+            String mode = "car";
+            if (Math.random() > 0.5){
+                mode = "pt";
+            }
+
             Activity activity1 = pf.createActivityFromCoord("home", homeCoord);
             double h = 8 + Math.random() * 4;
             activity1.setEndTime(h * 3600);
             plan.addActivity(activity1);
-            plan.addLeg(pf.createLeg("car"));
+            plan.addLeg(pf.createLeg(mode));
 
             //work activity
             Coord workCoord = GetRandomNodeInNetwork().getCoord();
@@ -72,7 +78,7 @@ public class CreateRandomPlans {
             Activity activity2 = pf.createActivityFromCoord("work", workCoord);
             activity2.setEndTime((h + 4 + Math.random() * 4) * 3600);
             plan.addActivity(activity2);
-            plan.addLeg(pf.createLeg("car"));
+            plan.addLeg(pf.createLeg(mode));
 
             Activity activity3 = pf.createActivityFromCoord("home", homeCoord);
             plan.addActivity(activity3);

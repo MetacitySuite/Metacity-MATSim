@@ -1,5 +1,6 @@
 package org.matsim.metacity;
 
+import org.geotools.util.factory.Hints;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.utils.geometry.CoordinateTransformation;

@@ -317,6 +317,8 @@ fabric.properties
 ### Custom
 matsim/data/matsim-files/input
 matsim/data/matsim-files/output
+matsim/data/matsim-files-test/input
+matsim/data/matsim-files-test/output
 matsim/data/prague-data
 matsim/.idea
 matsim/.classpath

@@ -13,7 +13,7 @@
 		<!-- release -->
 		<matsim.version>13.0</matsim.version>
 		<pt2matsim.version>21.8</pt2matsim.version>
-		<geotools.version>24.2</geotools.version>
+		<!-- <geotools.version>24.2</geotools.version> -->
 
 		<!-- smapshot -->
 		<!--<matsim.version>14.0-SNAPSHOT</matsim.version>-->
@@ -62,20 +62,21 @@
 		</repository>
 	</repositories>
 
-	<dependencies>
-		<dependency>
-			<!-- This is the matsim "core": -->
-			<groupId>org.matsim</groupId>
-			<artifactId>matsim</artifactId>
-			<version>${matsim.version}</version>
-		</dependency>
 
+	<dependencies>
 		<dependency>
 			<!-- Include the JUnit testing library.  Not transitive. -->
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.1</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<!-- This is the matsim "core": -->
+			<groupId>org.matsim</groupId>
+			<artifactId>matsim</artifactId>
+			<version>${matsim.version}</version>
 		</dependency>
 
 		<dependency>
@@ -128,19 +129,25 @@
 			<artifactId>pt2matsim</artifactId>
 			<version>${pt2matsim.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>compile</scope>
+        </dependency>
 
-		<!--
-		<dependency>
-			<groupId>org.geotools</groupId>
-			<artifactId>gt-referencing</artifactId>
-			<version>${geotools.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.geotools</groupId>
-			<artifactId>gt-epsg-hsql</artifactId>
-			<version>${geotools.version}</version>
-		</dependency>
-		-->
+        <!--
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-referencing</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.geotools</groupId>
+            <artifactId>gt-epsg-hsql</artifactId>
+            <version>${geotools.version}</version>
+        </dependency>
+        -->
 		<!--Dependencies from where stated above to here are added as a service; they can be removed if you don't need them-->
 
 	</dependencies>
