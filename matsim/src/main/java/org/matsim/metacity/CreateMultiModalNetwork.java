@@ -3,6 +3,7 @@ package org.matsim.metacity;
 import org.geotools.util.factory.Hints;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.network.io.MatsimNetworkReader;
 import org.matsim.core.utils.geometry.CoordinateTransformation;
 import org.matsim.core.utils.geometry.transformations.TransformationFactory;
 import org.matsim.core.network.algorithms.NetworkCleaner;

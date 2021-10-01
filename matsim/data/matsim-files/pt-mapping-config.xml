@@ -7,9 +7,9 @@
 		Must be >= 1. -->
 		<param name="candidateDistanceMultiplier" value="1.6" />
 		<!-- Path to the input network file. Not needed if PTMapper is called within another class. -->
-		<param name="inputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/multi-network-prague.xml.gz" />
+		<param name="inputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files-test/input/multi-network-prague.xml.gz" />
 		<!-- Path to the input schedule file. Not needed if PTMapper is called within another class. -->
-		<param name="inputScheduleFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/01-transit-schedule.xml.gz" />
+		<param name="inputScheduleFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files-test/input/01-transit-schedule.xml.gz" />
 		<!-- The maximal distance [meter] a link candidate is allowed to have from the stop facility.
 		No link candidates beyond this distance are added. -->
 		<param name="maxLinkCandidateDistance" value="90.0" />
@@ -28,9 +28,9 @@
 		<!-- Defines the number of numOfThreads that should be used for pseudoRouting. Default: 2. -->
 		<param name="numOfThreads" value="2" />
 		<!-- Path to the output network file. Not needed if PTMapper is used within another class. -->
-		<param name="outputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/pt-network-prague.xml.gz" />
+		<param name="outputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files-test/input/pt-network-prague.xml.gz" />
 		<!-- Path to the output schedule file. Not needed if PTMapper is used within another class. -->
-		<param name="outputScheduleFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/transit-schedule.xml.gz" />
+		<param name="outputScheduleFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files-test/input/transit-schedule.xml.gz" />
 		<!-- Path to the output car only network file. The input multimodal map is filtered. 
 		Not needed if PTMapper is used within another class. -->
 		<param name="outputStreetNetworkFile" value="" />
@@ -56,12 +56,16 @@
 			<param name="scheduleMode" value="bus" />
 		</parameterset>
 		<parameterset type="transportModeAssignment" >
-			<param name="networkModes" value="rail,light_rail" />
-			<param name="scheduleMode" value="rail" />
+			<param name="networkModes" value="subway" />
+			<param name="scheduleMode" value="subway" />
 		</parameterset>
 		<parameterset type="transportModeAssignment" >
-			<param name="networkModes" value="tram" />
+			<param name="networkModes" value="tram, light_rail" />
 			<param name="scheduleMode" value="tram" />
+		</parameterset>
+		<parameterset type="transportModeAssignment" >
+			<param name="networkModes" value="rail" />
+			<param name="scheduleMode" value="rail" />
 		</parameterset>
 	</module>
 

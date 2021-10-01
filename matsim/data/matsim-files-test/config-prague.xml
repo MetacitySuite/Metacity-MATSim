@@ -13,11 +13,11 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/test-population-2.xml" />
+		<param name="inputPlansFile" value="./input/test-population-150k.xml" />
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="./output/pop150k-eh2-qsim2" />
+		<param name="outputDirectory" value="./output/pop100k-eh2-qsim2" />
 		<param name="firstIteration" value="0" />
 		<param name="lastIteration" value="10" />
 		<param name="compressionType" value="gzip" />
@@ -33,7 +33,7 @@
 		<param name="flowCapacityFactor" value="0.1" /> <!-- simulating 10% population sample -->
 		<param name="storageCapacityFactor" value="0.3" />
 		<param name="snapshotperiod"  value = "5:00:00"/> <!-- 00:00:00 means NO snapshot writing -->
-		<param name="mainMode" value="car,bus,tram,subway,rail" />
+		<param name="mainMode" value="car,bus,tram,train" />
 		<param name="numberOfThreads" value="2" /> <!-- Parallel QSim -->
 	</module>
 
@@ -103,12 +103,6 @@
 		<param name="ModuleProbability_2" value="0.1" />
 		<param name="Module_2" value="ReRoute" />
 
-		<param name="ModuleProbability_3" value="0.1" />
-		<param name="Module_3" value="ChangeTripMode" />
-	</module>
-
-	<module name="changeMode">
-		<param name="modes" value="car,pt" />
 	</module>
 
 </config>

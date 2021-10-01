@@ -1,11 +1,24 @@
 package org.matsim.project;
 
+import org.geotools.referencing.CRS;
+import org.junit.Assert;
+import org.matsim.api.core.v01.network.Network;
+import org.matsim.api.core.v01.network.NetworkWriter;
 import org.matsim.core.config.ConfigWriter;
+import org.matsim.core.network.NetworkUtils;
+import org.matsim.core.network.io.MatsimNetworkReader;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+
+import org.matsim.core.utils.geometry.geotools.MGC;
+import org.matsim.core.utils.geometry.transformations.TransformationFactory;
+import org.opengis.referencing.FactoryException;
+import org.opengis.referencing.crs.CoordinateReferenceSystem;
+import org.geotools.referencing.CRS;
+
 
 import static org.matsim.metacity.CreateMultiModalNetwork.ConvertOSM2MultimodalNetwork;
 import static org.matsim.metacity.CreateMultiModalNetwork.PrepareConfiguration;
@@ -109,7 +122,7 @@ public class CreateMatsimNetwork {
         // <param name="allowedTransportModes" value="tram" />
         //PrepareNetworkConfig(prop);
 
-        CreateNetwork(prop); //Creates multimodal network
+        //CreateNetwork(prop); //Creates multimodal network
 
         //get unmapped PT schedule from GTFS
         //PrepareGTFS(prop);
@@ -117,6 +130,6 @@ public class CreateMatsimNetwork {
         //add tram transportModeAssignment manually
         //PreparePublicTransportConfig(prop);
 
-        //MapPublicTransport(prop);
+        MapPublicTransport(prop);
     }
 }
