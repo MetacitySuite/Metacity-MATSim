@@ -17,7 +17,7 @@
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="./output/pop150k-eh2-qsim2" />
+		<param name="outputDirectory" value="./output/pop2-eh2-qsim2" />
 		<param name="firstIteration" value="0" />
 		<param name="lastIteration" value="10" />
 		<param name="compressionType" value="gzip" />
