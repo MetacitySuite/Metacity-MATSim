@@ -21,7 +21,7 @@ import org.matsim.core.utils.geometry.CoordUtils;
 import java.util.*;
 
 public class CreateRandomPlans {
-    private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files-test/";
+    private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
     private static final String matsimConfigFile = dir + "config-prague.xml";
     private static final String populationFile = dir + "input/test-population-2.xml";
     private static final int demandSize = 2;

@@ -122,10 +122,10 @@ public class CreateMatsimNetwork {
         // <param name="allowedTransportModes" value="tram" />
         //PrepareNetworkConfig(prop);
 
-        //CreateNetwork(prop); //Creates multimodal network
+        CreateNetwork(prop); //Creates multimodal network
 
         //get unmapped PT schedule from GTFS
-        //PrepareGTFS(prop);
+        PrepareGTFS(prop);
 
         //add tram transportModeAssignment manually
         //PreparePublicTransportConfig(prop);
