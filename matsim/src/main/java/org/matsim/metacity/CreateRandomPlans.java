@@ -24,7 +24,7 @@ public class CreateRandomPlans {
     private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
     private static final String matsimConfigFile = dir + "config-prague.xml";
     private static final String populationFile = dir + "input/test-population-2.xml";
-    private static final int demandSize = 2;
+    private static final int demandSize = 100;
     private static final double radius = 5000;
 
     private static final Config config = ConfigUtils.loadConfig(matsimConfigFile);
@@ -59,9 +59,9 @@ public class CreateRandomPlans {
 
             //transport mode
             String mode = "car";
-            if (Math.random() > 0.5){
-                mode = "pt";
-            }
+            //if (Math.random() > 0.5){
+            //    mode = "pt";
+            //}
 
             Activity activity1 = pf.createActivityFromCoord("home", homeCoord);
             double h = 8 + Math.random() * 4;

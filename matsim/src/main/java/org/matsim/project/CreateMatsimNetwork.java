@@ -127,9 +127,9 @@ public class CreateMatsimNetwork {
         //get unmapped PT schedule from GTFS
         PrepareGTFS(prop);
 
+        TransformationFactory.KROVAK
         //add tram transportModeAssignment manually
         //PreparePublicTransportConfig(prop);
-
         MapPublicTransport(prop);
     }
 }

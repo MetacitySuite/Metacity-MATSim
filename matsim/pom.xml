@@ -4,28 +4,37 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.matsim</groupId>
 	<artifactId>matsim</artifactId>
-	<version>0.0.1</version>
+	<version>14.0-v1.0.0-SNAPSHOT</version>
 
 	<name>MATSim project</name>
 	<description>MATSim project</description>
 
 	<properties>
-		<!-- release -->
-		<matsim.version>13.0</matsim.version>
 		<pt2matsim.version>21.8</pt2matsim.version>
 		<!-- <geotools.version>24.2</geotools.version> -->
 
-		<!-- smapshot -->
-		<!--<matsim.version>14.0-SNAPSHOT</matsim.version>-->
+		<!-- release -->
+		<!-- <matsim.version>13.0</matsim.version> -->
+
+		<!-- snapshot -->
+		<!--<matsim.version>14.0-SNAPSHOT</matsim.version> -->
 
 		<!-- weekly release -->
-		<!--<matsim.version>14.0-2021w15-SNAPSHOT</matsim.version>-->
+		<matsim.version>14.0-PR1706</matsim.version>
+
+		<!-- <matsim.contrib.version>14.0-2021w39</matsim.contrib.version> -->
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
+
+	<scm>
+		<url>https://github.com/matsim-org/matsim</url>
+		<connection>scm:git:git://github.com/matsim-org/matsim.git</connection>
+		<developerConnection>scm:git:git@github.com:matsim-org/matsim.git</developerConnection>
+	</scm>
 
 	<repositories>
 	  <!--Note that in general repositories are not transitive, so they need to be repeated at every level where needed.-->
@@ -62,6 +71,18 @@
 		</repository>
 	</repositories>
 
+	<distributionManagement>
+		<repository>
+			<id>matsim-releases</id>
+			<name>MATSim Releases Maven Repository</name>
+			<url>https://repo.matsim.org/repository/matsim-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>matsim-snapshots</id>
+			<name>MATSim Snapshots Maven Repository</name>
+			<url>https://repo.matsim.org/repository/matsim-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<dependencies>
 		<dependency>
