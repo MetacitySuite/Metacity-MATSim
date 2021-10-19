@@ -4,7 +4,7 @@
 
 	<module name="global">
 		<param name="randomSeed" value="4711" />
-		<param name="coordinateSystem" value="epsg:5513" />
+		<param name="coordinateSystem" value="epsg:25832" />
 		<param name="numberOfThreads" value="2" /> <!-- parallel event handling -->
 	</module>
 
@@ -103,16 +103,15 @@
 
 	<module name="planscalcroute" >
 		<param name="networkModes" value="car" /> <!-- will be treated by the network router -->
-
-		<parameterset type="teleportedModeParameters" > <!-- teleportation setting -->
-			<param name="beelineDistanceFactor" value="1.3" />
-			<param name="mode" value="bike" />
-			<param name="teleportedModeSpeed" value="3.1388889" />
-		</parameterset>
 		<parameterset type="teleportedModeParameters" >
 			<param name="beelineDistanceFactor" value="1.3" />
 			<param name="mode" value="walk" />
 			<param name="teleportedModeSpeed" value="0.8333333333333333" />
+		</parameterset>
+		<parameterset type="teleportedModeParameters" > <!-- teleportation setting -->
+			<param name="beelineDistanceFactor" value="1.3" />
+			<param name="mode" value="bike" />
+			<param name="teleportedModeSpeed" value="3.1388889" />
 		</parameterset>
 	</module>
 

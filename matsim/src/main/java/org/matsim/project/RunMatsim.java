@@ -22,6 +22,7 @@ import org.matsim.api.core.v01.Scenario;
 import org.matsim.contrib.otfvis.OTFVisLiveModule;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.config.groups.PlansCalcRouteConfigGroup;
 import org.matsim.core.config.groups.QSimConfigGroup;
 import org.matsim.core.config.groups.QSimConfigGroup.SnapshotStyle;
 import org.matsim.core.config.groups.QSimConfigGroup.TrafficDynamics;
@@ -52,7 +53,7 @@ public class RunMatsim{
 
 		// possibly modify config here
 
-		// ---
+		// clearModeRoutingParams(true) --??
 
 		Scenario scenario = ScenarioUtils.loadScenario(config) ;
 		// possibly modify scenario here

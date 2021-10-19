@@ -19,7 +19,7 @@
 		<param name="osmFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/prague-data/prague2.osm" />
 		<!-- Output coordinate system. EPSG:* codes are supported and recommended.
 		Use 'WGS84' for no transformation (though this may lead to errors with PT mapping). -->
-		<param name="outputCoordinateSystem" value="epsg:5513"/>
+		<param name="outputCoordinateSystem" value="epsg:25832"/>
 		<!-- CSV file containing the full geometry (including start end end node) for each link.
 		This file can be used for visualization purposes in Simunto Via or GIS software. -->
 		<param name="outputDetailedLinkGeometryFile" value="null" />

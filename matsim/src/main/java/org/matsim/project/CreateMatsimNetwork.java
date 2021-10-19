@@ -31,7 +31,15 @@ public class CreateMatsimNetwork {
     public static final String configFile = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/resources/config.properties";
 
     public static String dataDir;
+
+    /**
+     * Output for the converter = input files for MATSim simulation
+     */
     public static String matsimOutputFilesDir;
+
+    /**
+     * Folder with configuration files: MATSim, OSM converter, PT mapping
+     */
     public static String matsimConfigFilesDir;
 
     /**
@@ -44,7 +52,7 @@ public class CreateMatsimNetwork {
         String converterConfigFile = matsimConfigFilesDir + prop.getProperty("osmConverterConfigFile");
         String inputOSMFile = dataDir + prop.getProperty("osmFile");
         String networkOutputFile = matsimOutputFilesDir + prop.getProperty("networkOutputFile");
-        String epsg = prop.getProperty("epsg");
+        String epsg = prop.getProperty("intermediateEPSG");
 
         PrepareConfiguration(converterConfigFile, inputOSMFile, networkOutputFile, epsg);
     }
@@ -66,7 +74,7 @@ public class CreateMatsimNetwork {
     public static void PrepareGTFS(Properties prop){
         String gtfsDir = dataDir + prop.getProperty("gtfsFolder");
         String sampleDay = prop.getProperty("gtfsSampleDay");
-        String epsg = prop.getProperty("epsg");
+        String epsg = prop.getProperty("intermediateEPSG");
 
         String unmappedScheduleFile = matsimOutputFilesDir + prop.getProperty("unmappedScheduleFile");
         String transitVehicleFile = matsimOutputFilesDir + prop.getProperty("transitVehicleFile");
@@ -102,6 +110,24 @@ public class CreateMatsimNetwork {
         MapGTFS2Network(ptMappingConfigFile, matsimConfigFile);
     }
 
+    /**
+     *
+     * @param prop
+     */
+    public static void TransformNetworkToKrovak(Properties prop){
+        String networkFile = matsimOutputFilesDir + prop.getProperty("mappedNetworkFile");
+        String epsg = prop.getProperty("intermediateEPSG");
+        String newNetworkFile = matsimOutputFilesDir + prop.getProperty("transformedMappedNetworkFile");
+
+        //read and transform to a new coordinate system
+        Network network = NetworkUtils.createNetwork();
+        String KROVAK = "PROJCS[\"S-JTSK / Krovak East North\",GEOGCS[\"S-JTSK\",DATUM[\"System_Jednotne_Trigonometricke_Site_Katastralni\",SPHEROID[\"Bessel 1841\",6377397.155,299.1528128,AUTHORITY[\"EPSG\",\"7004\"]],TOWGS84[570.8,85.7,462.8,4.998,1.587,5.261,3.56],AUTHORITY[\"EPSG\",\"6156\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4156\"]],PROJECTION[\"Krovak\"],PARAMETER[\"latitude_of_center\",49.5],PARAMETER[\"longitude_of_center\",24.83333333333333],PARAMETER[\"azimuth\",30.28813972222222],PARAMETER[\"pseudo_standard_parallel_1\",78.5],PARAMETER[\"scale_factor\",0.9999],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"X\",EAST],AXIS[\"Y\",NORTH],AUTHORITY[\"EPSG\",\"5514\"]]";
+        //String EPSGKROVAK = "PROJCS[\"S-JTSK / Krovak East North\",GEOGCS[\"S-JTSK\",DATUM[\"System_Jednotne_Trigonometricke_Site_Katastralni\",SPHEROID[\"Bessel 1841\",6377397.155,299.1528128,AUTHORITY[\"EPSG\",\"7004\"]],TOWGS84[589,76,480,0,0,0,0],AUTHORITY[\"EPSG\",\"6156\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4156\"]],PROJECTION[\"Krovak\"],PARAMETER[\"latitude_of_center\",49.5],PARAMETER[\"longitude_of_center\",24.83333333333333],PARAMETER[\"azimuth\",30.28813972222222],PARAMETER[\"pseudo_standard_parallel_1\",78.5],PARAMETER[\"scale_factor\",0.9999],PARAMETER[\"false_easting\",0],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"X\",EAST],AXIS[\"Y\",NORTH],AUTHORITY[\"EPSG\",\"5514\"]]";
+
+        new MatsimNetworkReader(epsg, KROVAK, network).readFile(networkFile);
+        new NetworkWriter(network).write(newNetworkFile);
+    }
+
     public static void main(String[] args)  {
         Properties prop = new Properties();
         try (FileInputStream fis = new FileInputStream(configFile)) {
@@ -120,6 +146,7 @@ public class CreateMatsimNetwork {
         // Define a wayDefaultParams section, which converts "railway=tram" OSM links to "tram" MATSim links.
         // By default there is a block that converts them to MATSim "rail" links, so you can simply change this value.
         // <param name="allowedTransportModes" value="tram" />
+        // Uncomment if you want to create a new config file
         //PrepareNetworkConfig(prop);
 
         CreateNetwork(prop); //Creates multimodal network
@@ -127,9 +154,12 @@ public class CreateMatsimNetwork {
         //get unmapped PT schedule from GTFS
         PrepareGTFS(prop);
 
-        TransformationFactory.KROVAK
-        //add tram transportModeAssignment manually
+        // add tram transportModeAssignment manually
+        // Uncomment if you want to create a new config file
         //PreparePublicTransportConfig(prop);
         MapPublicTransport(prop);
+
+        //Transform to different CRS
+        TransformNetworkToKrovak(prop);
     }
 }
