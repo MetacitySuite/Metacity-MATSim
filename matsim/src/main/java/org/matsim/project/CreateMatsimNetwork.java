@@ -160,6 +160,6 @@ public class CreateMatsimNetwork {
         MapPublicTransport(prop);
 
         //Transform to different CRS
-        TransformNetworkToKrovak(prop);
+        //TransformNetworkToKrovak(prop);
     }
 }

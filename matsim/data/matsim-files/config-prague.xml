@@ -4,8 +4,8 @@
 
 	<module name="global">
 		<param name="randomSeed" value="4711" />
-		<param name="coordinateSystem" value="epsg:25832" />
-		<param name="numberOfThreads" value="2" /> <!-- parallel event handling -->
+		<param name="coordinateSystem" value="epsg:5513" />
+		<param name="numberOfThreads" value="4" /> <!-- parallel event handling -->
 	</module>
 
 	<module name="network">
@@ -13,13 +13,13 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/test-population-2.xml" />
+		<param name="inputPlansFile" value="./input/test-population-100k.xml" />
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="./output/pop2-eh2-qsim2" />
+		<param name="outputDirectory" value="./output/pop100k-eh4-qsim2" />
 		<param name="firstIteration" value="0" />
-		<param name="lastIteration" value="10" />
+		<param name="lastIteration" value="25" />
 		<param name="compressionType" value="gzip" />
 		<param name="dumpDataAtEnd" value="true" />
 		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
@@ -85,20 +85,21 @@
 			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
 		</parameterset>
 
-		<!-- <parameterset type="activityParams" >
-			<param name="activityType"            value="home" />
+		<!-- Activity parameters are described for every activity in plans (population)!-->
+		<parameterset type="activityParams" >
+			<param name="activityType"    value="home" />
 			<param name="priority"        value="1" />
 			<param name="typicalDuration" value="12:00:00" />
 		</parameterset>
 		<parameterset type="activityParams" >
-			<param name="activityType"            value="work" />
+			<param name="activityType"    value="work" />
 			<param name="priority"        value="1" />
 			<param name="typicalDuration" value="08:00:00" />
 			<param name="openingTime"     value="07:00:00" />
 			<param name="latestStartTime" value="13:00:00" />
 			<param name="earliestEndTime" value="6:00:00" />
 			<param name="closingTime"     value="22:00:00" />
-		</parameterset> -->
+		</parameterset>
 	</module>
 
 	<module name="planscalcroute" >
@@ -130,7 +131,7 @@
 	</module>
 
 	<module name="changeMode">
-		<param name="modes" value="car,pt" />
+		<param name="modes" value="car,pt,walk" />
 	</module>
 
 </config>
