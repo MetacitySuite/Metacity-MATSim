@@ -14,24 +14,37 @@ import org.matsim.api.core.v01.population.PopulationFactory;
 import org.matsim.api.core.v01.population.PopulationWriter;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.config.groups.NetworkConfigGroup;
+import org.matsim.core.network.NetworkUtils;
+import org.matsim.core.network.io.MatsimNetworkReader;
 import org.matsim.core.population.PopulationUtils;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.geometry.CoordUtils;
 
 import java.util.*;
 
+/**
+ * Basic class to create random home-work plans for agents (population)
+ */
 public class CreateRandomPlans {
+    /*Edit if necessary*/
     private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
     private static final String matsimConfigFile = dir + "config-prague.xml";
-    private static final String populationFile = dir + "input/test-population-100k.xml";
-    private static final int demandSize = 100000;
+    private static final String networkFile = dir + "input/pt-network-prague.xml.gz";
+    private static final int demandSize = 10000; //population size, usually 10% of real population size is enough
     private static final double radius = 5000;
+    private static final String outputPopulationFile = dir + "input/test-population-" + Integer.toString(demandSize) + ".xml";
+    //in hours
+    private static final int earliestHomeDeparture = 7; // +/- offsetTime
+    private static final int earliestHomeDepartureOffset = 2;
 
-    private static final Config config = ConfigUtils.loadConfig(matsimConfigFile);
-    private static final Scenario scenario = ScenarioUtils.loadScenario(config);
-    private static final Network network = scenario.getNetwork();
-    private static final Map<Id<Node>,? extends  Node> allNodesInNetwork = network.getNodes();
-    private static final List<Id<Node>> keys = new ArrayList<>(allNodesInNetwork.keySet());
+    //TODO: does not take into account travel time
+    private static final int workDuration = 9; // +/- offsetTime
+    private static final int workDurationOffsetTime = 3;
+
+
+    private static Map<Id<Node>,? extends  Node> allNodesInNetwork;
+    private static List<Id<Node>> keys;
 
     private static Node GetRandomNodeInNetwork(){
         //get random node Id
@@ -40,11 +53,16 @@ public class CreateRandomPlans {
         return allNodesInNetwork.get(randomKey);
     }
 
-    private static void CreatePopulation(){
-        //Population pop = PopulationUtils.createPopulation(config, network);
-        Population pop = scenario.getPopulation();
-        PopulationFactory pf = pop.getFactory();
+    private static void ProcessNetwork(Network network){
+        allNodesInNetwork = network.getNodes();
+        keys = new ArrayList<>(allNodesInNetwork.keySet());
+    }
 
+    private static Population CreatePopulation(Network network, Config config){
+        //Population pop = PopulationUtils.createPopulation(config, network);
+        //Population pop = scenario.getPopulation();
+        Population pop = PopulationUtils.createPopulation(config);
+        PopulationFactory pf = pop.getFactory();
 
         for (int i = 0; i < demandSize; ++i) {
             //create a person
@@ -57,7 +75,8 @@ public class CreateRandomPlans {
             //home activity
             Coord homeCoord = GetRandomNodeInNetwork().getCoord();
 
-            //transport mode
+            //define 1 transport mode
+            //TODO: something smarter
             String mode = "car";
             if (Math.random() > 0.5){
                 mode = "pt";
@@ -67,8 +86,8 @@ public class CreateRandomPlans {
             }
 
             Activity activity1 = pf.createActivityFromCoord("home", homeCoord);
-            double h = 4 + Math.random() * 4;
-            activity1.setEndTime(h * 3600);
+            double homeTime = earliestHomeDeparture + (Math.random() * earliestHomeDepartureOffset * ((Math.random() < 0.5) ? -1 : 1));
+            activity1.setEndTime(homeTime * 3600);
             plan.addActivity(activity1);
             plan.addLeg(pf.createLeg(mode));
 
@@ -79,7 +98,8 @@ public class CreateRandomPlans {
             }
 
             Activity activity2 = pf.createActivityFromCoord("work", workCoord);
-            activity2.setEndTime((h + 6 + Math.random() * 4) * 3600);
+            double workTime = homeTime + workDuration + ( Math.random() * workDurationOffsetTime * ((Math.random() < 0.5) ? -1 : 1) );
+            activity2.setEndTime(workTime* 3600);
             plan.addActivity(activity2);
             plan.addLeg(pf.createLeg(mode));
 
@@ -87,12 +107,23 @@ public class CreateRandomPlans {
             plan.addActivity(activity3);
             person.addPlan(plan);
         }
+        return pop;
     }
 
     public static void main(String[] args){
-        //Create population from nothing
-        CreatePopulation();
-        PopulationWriter populationWriter = new PopulationWriter(scenario.getPopulation(), scenario.getNetwork());
-        populationWriter.write(populationFile);
+        Config config = ConfigUtils.loadConfig(matsimConfigFile);
+        NetworkConfigGroup ncg = config.network();
+
+        //read the network file
+        Network network = NetworkUtils.createNetwork();
+        String epsg = ncg.getInputCRS();
+        new MatsimNetworkReader(epsg, epsg, network).readFile(networkFile);
+
+        //crate a list of all nodes in the network
+        ProcessNetwork(network);
+
+        //Create population from this network
+        Population pop = CreatePopulation(network, config);
+        new PopulationWriter(pop).write(outputPopulationFile);
     }
 }

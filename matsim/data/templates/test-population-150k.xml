@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE population SYSTEM "http://www.matsim.org/files/dtd/population_v6.dtd">
-
-<population>
-
-	<attributes>
-		<attribute name="coordinateReferenceSystem" class="java.lang.String">epsg:5513</attribute>
-	</attributes>
-</population>

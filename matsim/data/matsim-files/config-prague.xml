@@ -13,11 +13,11 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/test-population-100k.xml" />
+		<param name="inputPlansFile" value="./input/test-population-10k.xml" />
 	</module>
 
 	<module name="controler">
-		<param name="outputDirectory" value="./output/pop100k-eh4-qsim2" />
+		<param name="outputDirectory" value="./output/pop10k-eh4-qsim2-25it" />
 		<param name="firstIteration" value="0" />
 		<param name="lastIteration" value="25" />
 		<param name="compressionType" value="gzip" />
