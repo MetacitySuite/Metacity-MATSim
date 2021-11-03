@@ -31,7 +31,7 @@ public class CreateRandomPlans {
     private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
     private static final String matsimConfigFile = dir + "config-prague.xml";
     private static final String networkFile = dir + "input/pt-network-prague.xml.gz";
-    private static final int demandSize = 10000; //population size, usually 10% of real population size is enough
+    private static final int demandSize = 150000; //population size, usually 10% of real population size is enough
     private static final double radius = 5000;
     private static final String outputPopulationFile = dir + "input/test-population-" + Integer.toString(demandSize) + ".xml";
     //in hours
@@ -41,7 +41,6 @@ public class CreateRandomPlans {
     //TODO: does not take into account travel time
     private static final int workDuration = 9; // +/- offsetTime
     private static final int workDurationOffsetTime = 3;
-
 
     private static Map<Id<Node>,? extends  Node> allNodesInNetwork;
     private static List<Id<Node>> keys;

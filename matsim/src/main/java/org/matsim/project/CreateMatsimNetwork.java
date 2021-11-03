@@ -157,9 +157,10 @@ public class CreateMatsimNetwork {
         // add tram transportModeAssignment manually
         // Uncomment if you want to create a new config file
         //PreparePublicTransportConfig(prop);
+
         MapPublicTransport(prop);
 
-        //Transform to different CRS
+        //TODO: Transform to different CRS
         //TransformNetworkToKrovak(prop);
     }
 }

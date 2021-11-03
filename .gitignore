@@ -315,15 +315,16 @@ fabric.properties
 .idea/codestream.xml
 
 ### Custom
-matsim/data/matsim-files/input
-matsim/data/matsim-files/output
+matsim/data/matsim-files/input*
+matsim/data/matsim-files/output*
 matsim/data/matsim-files-test
+matsim/data/matsim-testing-files
 matsim/data/prague-data
 matsim/.idea
 matsim/.classpath
 matsim/.settings
 matsim/.project
-matsim/output
+matsim/output*
 matsim/matsim-0.0.1.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/python,java,linux,virtualenv,visualstudiocode

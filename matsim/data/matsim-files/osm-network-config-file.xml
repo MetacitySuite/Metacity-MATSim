@@ -14,7 +14,7 @@
 		<param name="keepTagsAsAttributes" value="true" />
 		<!-- Keep all ways (highway=* and railway=*) with public transit even if they don't have wayDefaultParams defined -->
 		<param name="keepWaysWithPublicTransit" value="true" />
-		<param name="maxLinkLength" value="500.0" />
+		<param name="maxLinkLength" value="300.0" />
 		<!-- The path to the osm file. -->
 		<param name="osmFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/prague-data/prague2.osm" />
 		<!-- Output coordinate system. EPSG:* codes are supported and recommended.
@@ -41,13 +41,13 @@
 			<param name="subnetworkMode" value="subway" />
 		</parameterset>
 		<parameterset type="routableSubnetwork" >
-			<param name="allowedTransportModes" value="tram,car" />
+			<param name="allowedTransportModes" value="tram" />
 			<param name="subnetworkMode" value="tram" />
 		</parameterset>
-		<parameterset type="routableSubnetwork" >
+		<!--<parameterset type="routableSubnetwork" >
 			<param name="allowedTransportModes" value="rail" />
 			<param name="subnetworkMode" value="rail" />
-		</parameterset>
+		</parameterset> -->
 		<parameterset type="wayDefaultParams" >
 			<param name="allowedTransportModes" value="car" />
 			<param name="freespeed" value="33.333333333333336" />
@@ -184,7 +184,7 @@
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="9999.0" />
 			<param name="lanes" value="1.0" />
-			<param name="oneway" value="true" />
+			<param name="oneway" value="false" />
 			<param name="osmKey" value="railway" />
 			<param name="osmValue" value="tram" />
 		</parameterset>
@@ -194,7 +194,7 @@
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="9999.0" />
 			<param name="lanes" value="1.0" />
-			<param name="oneway" value="true" />
+			<param name="oneway" value="false" />
 			<param name="osmKey" value="railway" />
 			<param name="osmValue" value="light_rail" />
 		</parameterset>
@@ -210,16 +210,6 @@
 			<param name="osmValue" value="subway" />
 		</parameterset>
 
-		<parameterset type="wayDefaultParams" >
-			<param name="allowedTransportModes" value="rail" />
-			<param name="freespeed" value="22.22222222222222" />
-			<param name="freespeedFactor" value="1.0" />
-			<param name="laneCapacity" value="9999.0" />
-			<param name="lanes" value="1.0" />
-			<param name="oneway" value="false" />
-			<param name="osmKey" value="railway" />
-			<param name="osmValue" value="rail" />
-		</parameterset>
 		<!-- <parameterset type="wayDefaultParams" >
 			<param name="allowedTransportModes" value="rail" />
 			<param name="freespeed" value="22.22222222222222" />
@@ -228,8 +218,18 @@
 			<param name="lanes" value="1.0" />
 			<param name="oneway" value="false" />
 			<param name="osmKey" value="railway" />
-			<param name="osmValue" value="light_rail" />
+			<param name="osmValue" value="rail" />
 		</parameterset> -->
+		<!--<parameterset type="wayDefaultParams" >
+			<param name="allowedTransportModes" value="rail" />
+			<param name="freespeed" value="22.22222222222222" />
+			<param name="freespeedFactor" value="1.0" />
+			<param name="laneCapacity" value="9999.0" />
+			<param name="lanes" value="1.0" />
+			<param name="oneway" value="false" />
+			<param name="osmKey" value="railway" />
+			<param name="osmValue" value="light_rail" />
+		</parameterset>-->
 	</module>
 
 </config>
