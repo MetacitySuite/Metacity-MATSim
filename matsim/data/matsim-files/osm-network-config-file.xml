@@ -8,13 +8,13 @@
 		or branchings are kept as nodes. This reduces the number of nodes and links in the network, but can in some rare
 		cases generate extremely long links (e.g. for motorways with only a few ramps every few kilometers).
 		Defaults to <code>false</code>. -->
-		<param name="keepPaths" value="false" />
+		<param name="keepPaths" value="true" />
 		<!-- If true: The osm tags for ways and containing relations are saved as link attributes in the network.
 		Increases filesize. Default: true. -->
 		<param name="keepTagsAsAttributes" value="true" />
 		<!-- Keep all ways (highway=* and railway=*) with public transit even if they don't have wayDefaultParams defined -->
 		<param name="keepWaysWithPublicTransit" value="true" />
-		<param name="maxLinkLength" value="300.0" />
+		<param name="maxLinkLength" value="50.0" />
 		<!-- The path to the osm file. -->
 		<param name="osmFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/prague-data/prague2.osm" />
 		<!-- Output coordinate system. EPSG:* codes are supported and recommended.
