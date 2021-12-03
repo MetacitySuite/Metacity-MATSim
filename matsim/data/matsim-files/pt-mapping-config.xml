@@ -2,14 +2,18 @@
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
 	<module name="PublicTransitMapping" >
-		<!-- After nLinkThreshold link candidates have been found, additional link 
-		candidates within [candidateDistanceMultiplier] * [distance to the Nth link] are added to the set.
-		Must be >= 1. -->
-		<param name="candidateDistanceMultiplier" value="1.6" />
 		<!-- Path to the input network file. Not needed if PTMapper is called within another class. -->
 		<param name="inputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/multi-network-prague.xml.gz" />
 		<!-- Path to the input schedule file. Not needed if PTMapper is called within another class. -->
 		<param name="inputScheduleFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/01-transit-schedule.xml.gz" />
+		<!-- Path to the output network file. Not needed if PTMapper is used within another class. -->
+		<param name="outputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/pt-network-prague.xml.gz" />
+		<!-- Path to the output schedule file. Not needed if PTMapper is used within another class. -->
+		<param name="outputScheduleFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/transit-schedule.xml.gz" />
+		<!-- After nLinkThreshold link candidates have been found, additional link
+		candidates within [candidateDistanceMultiplier] * [distance to the Nth link] are added to the set.
+		Must be >= 1. -->
+		<param name="candidateDistanceMultiplier" value="1.6" />
 		<!-- The maximal distance [meter] a link candidate is allowed to have from the stop facility.
 		No link candidates beyond this distance are added. -->
 		<param name="maxLinkCandidateDistance" value="600.0" />
@@ -27,10 +31,6 @@
 		<param name="nLinkThreshold" value="6" />
 		<!-- Defines the number of numOfThreads that should be used for pseudoRouting. Default: 2. -->
 		<param name="numOfThreads" value="2" />
-		<!-- Path to the output network file. Not needed if PTMapper is used within another class. -->
-		<param name="outputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/pt-network-prague.xml.gz" />
-		<!-- Path to the output schedule file. Not needed if PTMapper is used within another class. -->
-		<param name="outputScheduleFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/transit-schedule.xml.gz" />
 		<!-- Path to the output car only network file. The input multimodal map is filtered. 
 		Not needed if PTMapper is used within another class. -->
 		<param name="outputStreetNetworkFile" value="" />

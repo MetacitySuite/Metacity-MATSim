@@ -24,7 +24,11 @@ import org.matsim.core.utils.geometry.CoordUtils;
 import java.util.*;
 
 /**
- * Basic class to create random home-work plans for agents (population)
+ * Basic class to create random home-work plans for agents (population).
+ * Used until the synthetic population module is finished and a real plans file will be created.
+ *
+ * FOR TESTING RUNS ONLY!
+ *
  */
 public class CreateRandomPlans {
     /*Edit if necessary*/

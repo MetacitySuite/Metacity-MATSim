@@ -46,12 +46,12 @@ public class RunMatsim{
 		} else {
 			config = ConfigUtils.loadConfig( args );
 		}
-		config.controler().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
 
 		config.qsim().setTrafficDynamics( TrafficDynamics.kinematicWaves );
 		config.qsim().setSnapshotStyle( SnapshotStyle.kinematicWaves );
 
 		// possibly modify config here
+		config.controler().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
 
 		// clearModeRoutingParams(true) --??
 
