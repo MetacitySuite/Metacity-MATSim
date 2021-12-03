@@ -1,9 +1,14 @@
 package org.matsim.project;
 
+import com.graphhopper.jsprit.core.reporting.SolutionPrinter;
 import org.geotools.referencing.CRS;
 import org.junit.Assert;
 import org.matsim.api.core.v01.network.Network;
 import org.matsim.api.core.v01.network.NetworkWriter;
+import org.matsim.api.core.v01.population.Population;
+import org.matsim.api.core.v01.population.PopulationWriter;
+import org.matsim.core.config.Config;
+import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
 import org.matsim.core.network.NetworkUtils;
 import org.matsim.core.network.io.MatsimNetworkReader;
@@ -13,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.matsim.core.population.PopulationUtils;
 import org.matsim.core.utils.geometry.geotools.MGC;
 import org.matsim.core.utils.geometry.transformations.TransformationFactory;
 import org.opengis.referencing.FactoryException;
@@ -128,6 +134,14 @@ public class CreateMatsimNetwork {
         new NetworkWriter(network).write(newNetworkFile);
     }
 
+    public static void CreateDummyPopulationFile(Properties prop){
+        String matsimConfigFile = matsimConfigFilesDir + prop.getProperty("matsimConfigFile");
+        Config config = ConfigUtils.loadConfig(matsimConfigFile);
+        Population pop = PopulationUtils.createPopulation(config);
+        String outputPopulationFile = matsimOutputFilesDir + prop.getProperty("dummyPopulationFile");
+        new PopulationWriter(pop).write(outputPopulationFile);
+    }
+
     public static void main(String[] args)  {
         Properties prop = new Properties();
         try (FileInputStream fis = new FileInputStream(configFile)) {
@@ -141,6 +155,9 @@ public class CreateMatsimNetwork {
         dataDir = prop.getProperty("dataDir") + prop.getProperty("dataFolder");
         matsimOutputFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimOutputFilesFolder");
         matsimConfigFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimConfigFilesFolder");
+
+        //Create a dummy population file to be able to process config
+        CreateDummyPopulationFile(prop);
 
         // Open the createOsmConfigFile Config and set the parameters to the required values (usually done manually by opening the config with a simple editor)
         // Define a wayDefaultParams section, which converts "railway=tram" OSM links to "tram" MATSim links.
