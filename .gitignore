@@ -320,11 +320,13 @@ matsim/data/matsim-files/output*
 matsim/data/matsim-files-test
 matsim/data/matsim-testing-files
 matsim/data/prague-data
+matsim/data/templates
 matsim/.idea
 matsim/.classpath
 matsim/.settings
 matsim/.project
 matsim/output*
+matsim/RunSimulationAllConfigs.py
 matsim/matsim-0.0.1.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/python,java,linux,virtualenv,visualstudiocode

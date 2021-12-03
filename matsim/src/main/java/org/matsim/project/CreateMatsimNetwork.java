@@ -146,7 +146,7 @@ public class CreateMatsimNetwork {
         // Define a wayDefaultParams section, which converts "railway=tram" OSM links to "tram" MATSim links.
         // By default there is a block that converts them to MATSim "rail" links, so you can simply change this value.
         // <param name="allowedTransportModes" value="tram" />
-        // Uncomment if you want to create a new config file
+        // UNCOMMENT if you want to create a new config file
         //PrepareNetworkConfig(prop);
 
         CreateNetwork(prop); //Creates multimodal network
@@ -155,7 +155,7 @@ public class CreateMatsimNetwork {
         PrepareGTFS(prop);
 
         // add tram transportModeAssignment manually
-        // Uncomment if you want to create a new config file
+        // UNCOMMENT if you want to create a new config file
         //PreparePublicTransportConfig(prop);
 
         MapPublicTransport(prop);
