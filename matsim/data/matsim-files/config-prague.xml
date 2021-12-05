@@ -17,7 +17,7 @@
 		<param name="compressionType" value="gzip" />
 		<param name="dumpDataAtEnd" value="true" />
 		<!-- The type of routing (least cost path) algorithm used, may have the values: [Dijkstra, AStarLandmarks, FastDijkstra, FastAStarLandmarks, SpeedyALT] -->
-		<!--<param name="routingAlgorithmType" value="AStarLandmarks" /> -->
+		<param name="routingAlgorithmType" value="FastAStarLandmarks" />
 		<param name="overwriteFiles" value="deleteDirectoryIfExists" />
 		<param name="createGraphs" value="false" />
 
@@ -51,7 +51,7 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/test-population-10k.xml" />
+		<param name="inputPlansFile" value="./input/test-population-1k.xml" />
 	</module>
 
 	<module name="transit" >

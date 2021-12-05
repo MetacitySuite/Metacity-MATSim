@@ -47,26 +47,28 @@ public class RunMatsim{
 			config = ConfigUtils.loadConfig( args );
 		}
 
+		// Possibly modify config here --------------------------------------------------------------------------------
+
+		//qsim
 		config.qsim().setTrafficDynamics( TrafficDynamics.kinematicWaves );
 		config.qsim().setSnapshotStyle( SnapshotStyle.kinematicWaves );
+		//config.qsim().setInsertingWaitingVehiclesBeforeDrivingVehicles(true);
 
-		// possibly modify config here
+		//controler
 		config.controler().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
-
 		// clearModeRoutingParams(true) --??
 
 		Scenario scenario = ScenarioUtils.loadScenario(config) ;
-		// possibly modify scenario here
+
+		// Possibly modify scenario here ------------------------------------------------------------------------------
 
 		Controler controler = new Controler( scenario ) ;
 
-		// possibly modify controler here
+		// Possibly modify controler here -----------------------------------------------------------------------------
 
 		controler.addOverridingModule( new OTFVisLiveModule() ) ;
 
-
 		// ---
-
 		controler.run();
 	}
 	
