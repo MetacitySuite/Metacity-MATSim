@@ -146,6 +146,15 @@
 			<param name="earliestEndTime" value="6:00:00" />
 			<param name="closingTime"     value="22:00:00" />
 		</parameterset>
+		<parameterset type="activityParams" >
+			<param name="activityType"    value="education" />
+			<param name="priority"        value="1" />
+			<param name="typicalDuration" value="06:00:00" />
+			<param name="openingTime"     value="07:00:00" />
+			<param name="latestStartTime" value="13:00:00" />
+			<param name="earliestEndTime" value="6:00:00" />
+			<param name="closingTime"     value="22:00:00" />
+		</parameterset>
 
 		<!-- TODO -->
 		<parameterset type="activityParams" >
