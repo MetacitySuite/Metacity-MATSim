@@ -9,11 +9,15 @@ import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.gbl.MatsimRandom;
 import org.matsim.core.scenario.ScenarioUtils;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Random;
 public class DownsamplePopulation {
     private static final double DOWNSAMPLE_FACTOR = 0.1;
-    private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
+    private static final String dir = "data/matsim-files/";
     private static final String matsimConfigFile = dir + "config-prague.xml";
     private static final String matsimOutputFilesDir = "input/";
 
@@ -34,7 +38,7 @@ public class DownsamplePopulation {
     public static void main(String[] args){
         double sampleFactor = DOWNSAMPLE_FACTOR;
         if ( args==null || args.length==0 || args[0]==null ){
-            System.out.println("(error) missing sample factor. Factor of 0.1 will be used.");
+            System.out.println("(info) missing arguments: sample factor of 0.1 will be used.");
         } else {
             sampleFactor = Double.parseDouble(args[0]);
         }
