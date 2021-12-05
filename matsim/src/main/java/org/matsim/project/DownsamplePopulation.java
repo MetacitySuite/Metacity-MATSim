@@ -1,4 +1,4 @@
-package org.matsim.metacity;
+package org.matsim.project;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.Person;
@@ -32,12 +32,19 @@ public class DownsamplePopulation {
     }*/
 
     public static void main(String[] args){
+        double sampleFactor = DOWNSAMPLE_FACTOR;
+        if ( args==null || args.length==0 || args[0]==null ){
+            System.out.println("(error) missing sample factor. Factor of 0.1 will be used.");
+        } else {
+            sampleFactor = Double.parseDouble(args[0]);
+        }
+
         Config config = ConfigUtils.loadConfig(matsimConfigFile);
         Scenario scenario = ScenarioUtils.loadScenario(config);
-        Downsample(scenario.getPopulation().getPersons(), DOWNSAMPLE_FACTOR);
+        Downsample(scenario.getPopulation().getPersons(), sampleFactor);
 
         //write downsampled population file
-        int percent = (int)(DOWNSAMPLE_FACTOR * 100);
+        int percent = (int)(sampleFactor * 100);
         String outputPopulationFile = dir + matsimOutputFilesDir + "population-" + Integer.toString(percent) + "pct.xml";
         Population pop = scenario.getPopulation();
         new PopulationWriter(pop).write(outputPopulationFile);

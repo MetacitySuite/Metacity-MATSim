@@ -16,6 +16,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * First attempt to create a config file automatically.
+ *
+ *
+ */
+
+
 public class CreateConfig {
     //TODO
     public static final String configFile = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/resources/config.properties";
