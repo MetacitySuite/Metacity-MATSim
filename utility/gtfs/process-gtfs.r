@@ -1,10 +1,14 @@
+#install.packages("sf")
+#install.packages("lwgeom")
+#install.packages("gtfs2gps") # filter_by_route_id
+#install.packages("gtfstools")
+
 #library(gtfstools)
 library(gtfs2gps)
 
 
 #' Filters GTFS routes by ID, outputs a filtered GTFS with specified routes only.
  
-
 data_path <- "/home/metakocour/Scripts"
 gtfs_path <- file.path(data_path, "PID_GTFS-1-nov-2021.zip")
 gtfs <- read_gtfs(gtfs_path)

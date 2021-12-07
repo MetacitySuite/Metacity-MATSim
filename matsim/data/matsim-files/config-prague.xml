@@ -51,7 +51,7 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/population.xml.gz" />
+		<param name="inputPlansFile" value="./input/population-10pct.xml" />
 	</module>
 
 	<module name="transit" >
@@ -205,7 +205,7 @@
 	<module name="TimeAllocationMutator" >
 		<param name="mutationAffectsDuration" value="true" />
 		<!-- Default:1800.0; Defines how many seconds a time mutation can maximally shift a time. -->
-		<param name="mutationRange" value="900.0" />
+		<param name="mutationRange" value="1800.0" />
 	</module>
 
 	<module name="swissRailRaptor">
