@@ -194,11 +194,13 @@
 		<parameterset type="teleportedModeParameters" >
 			<param name="beelineDistanceFactor" value="1.3" />
 			<param name="mode" value="walk" />
+			<!-- Speed for a teleported mode. Travel time = (<beeline distance> * beelineDistanceFactor) / teleportedModeSpeed. Insert a line like this for every such mode. -->
 			<param name="teleportedModeSpeed" value="0.8333333333333333" />
 		</parameterset>
 		<parameterset type="teleportedModeParameters" > <!-- teleportation setting -->
 			<param name="beelineDistanceFactor" value="1.3" />
 			<param name="mode" value="bike" />
+			<!-- Speed for a teleported mode. Travel time = (<beeline distance> * beelineDistanceFactor) / teleportedModeSpeed. Insert a line like this for every such mode. -->
 			<param name="teleportedModeSpeed" value="3.1388889" />
 		</parameterset>
 	</module>
@@ -227,11 +229,10 @@
 		<param name="maxAgentPlanMemorySize" value="5" /> <!-- 0 means unlimited -->
 		<param name="fractionOfIterationsToDisableInnovation" value="0.8" /> <!-- disable innovation later on -->
 
-		<param name="ModuleProbability_1" value="0.9" />
-		<param name="Module_1" value="BestScore" />
-
-		<!-- <param name="ModuleProbability_2" value="0.1" /> -->
-		<!--<param name="Module_2" value="ReRoute" /> -->
+		<parameterset type="strategysettings" >
+			<param name="strategyName" value="BestScore" />
+			<param name="weight" value="0.9" />
+		</parameterset>
 
 		<parameterset type="strategysettings" >
 			<param name="strategyName" value="ChangeExpBeta" />
@@ -254,6 +255,12 @@
 			<param name="strategyName" value="TimeAllocationMutator_ReRoute" />
 			<param name="weight" value="0.1" />
 		</parameterset>
+
+		<!-- <param name="ModuleProbability_1" value="0.9" /> -->
+		<!-- <param name="Module_1" value="BestScore" /> -->
+
+		<!-- <param name="ModuleProbability_2" value="0.1" /> -->
+		<!-- <param name="Module_2" value="ReRoute" /> -->
 
 		<!--Remove with actual simulation-->
 		<!--<param name="ModuleProbability_3" value="0.1" />
