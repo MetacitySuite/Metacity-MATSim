@@ -1,0 +1,16 @@
+{
+	"global": {
+		"randomSeed": "4512",
+		"numberOfThreads": "16"
+		},
+	"controler": {
+		"outputDirectory": "./output/pop10pct-200it",
+		"lastIteration": "200"
+		},
+	"qsim": {
+		"numberOfThreads": "4"
+	},
+	"plans": {
+		"inputPlansFile": "./input/population.xml.gz"
+	}
+}

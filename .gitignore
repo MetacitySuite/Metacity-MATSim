@@ -329,4 +329,8 @@ matsim/output*
 matsim/RunSimulationAllConfigs.py
 matsim/matsim-0.0.1.jar
 
+utility/performance-testing/matsim_testing_files/
+utility/performance-testing/outputs
+
+
 # End of https://www.toptal.com/developers/gitignore/api/python,java,linux,virtualenv,visualstudiocode
