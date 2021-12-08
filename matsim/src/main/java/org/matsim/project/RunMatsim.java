@@ -53,6 +53,7 @@ public class RunMatsim{
 		config.qsim().setTrafficDynamics( TrafficDynamics.kinematicWaves );
 		config.qsim().setSnapshotStyle( SnapshotStyle.kinematicWaves );
 		//config.qsim().setInsertingWaitingVehiclesBeforeDrivingVehicles(true);
+		config.qsim().setPcuThresholdForFlowCapacityEasing( 0.3 );
 
 		//controler
 		config.controler().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
