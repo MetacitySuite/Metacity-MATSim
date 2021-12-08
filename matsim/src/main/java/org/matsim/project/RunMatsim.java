@@ -53,6 +53,8 @@ public class RunMatsim{
 		config.qsim().setTrafficDynamics( TrafficDynamics.kinematicWaves );
 		config.qsim().setSnapshotStyle( SnapshotStyle.kinematicWaves );
 		//config.qsim().setInsertingWaitingVehiclesBeforeDrivingVehicles(true);
+
+		//https://github.com/matsim-org/matsim-code-examples/issues/395
 		config.qsim().setPcuThresholdForFlowCapacityEasing( 0.3 );
 
 		//controler

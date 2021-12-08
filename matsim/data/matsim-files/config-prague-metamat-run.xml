@@ -3,9 +3,9 @@
 <config>
 
 	<module name="global">
-		<param name="randomSeed" value="4711" />
+		<param name="randomSeed" value="5231" />
 		<param name="coordinateSystem" value="epsg:5513" />
-		<param name="numberOfThreads" value="4" /> <!-- parallel event handling -->
+		<param name="numberOfThreads" value="16" /> <!-- parallel event handling -->
 		<param name="insistingOnDeprecatedConfigVersion" value="false" />
 	</module>
 
@@ -43,7 +43,7 @@
 		<param name="storageCapacityFactor" value="0.18" /> <!-- flowCapacityFactor^(0.75) probably-->
 		<param name="snapshotperiod"  value = "5:00:00"/> <!-- 00:00:00 means NO snapshot writing -->
 		<param name="mainMode" value="car" /> <!-- uses routing in qsim! -->
-		<param name="numberOfThreads" value="2" /> <!-- Parallel QSim -->
+		<param name="numberOfThreads" value="4" /> <!-- Parallel QSim -->
 	</module>
 
 	<!-- =================================================================================================================================== -->
@@ -53,7 +53,7 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/population-10pct.xml" />
+		<param name="inputPlansFile" value="./input/population-10pct.xml.gz" />
 	</module>
 
 	<module name="transit" >
@@ -65,7 +65,6 @@
 		<param name="transitModes" value="pt" />
 	</module>
 
-	<!-- TODO -->
 	<module name="facilities" >
 		<!-- This defines how facilities should be created. Possible values: none fromFile setInScenario onePerActivityLinkInPlansFile onePerActivityLinkInPlansFileExceptWhenCoordinatesAreGiven onePerActivityLocationInPlansFile  -->
 		<param name="facilitiesSource" value="none" />
@@ -84,6 +83,7 @@
 		<param name="insistingOnUsingDeprecatedHouseholdsAttributeFile" value="false" />
 	</module>
 
+	<!-- TODO -->
 	<!-- <module name="vehicles" >
 		<param name="vehiclesFile" value="null" />
 	</module> -->
@@ -160,7 +160,7 @@
 		</parameterset>
 
 		<!-- TODO -->
-		<parameterset type="activityParams" >
+		<!-- <parameterset type="activityParams" >
 			<param name="activityType" value="car interaction" />
 			<param name="closingTime" value="undefined" />
 			<param name="earliestEndTime" value="undefined" />
@@ -170,8 +170,8 @@
 			<param name="priority" value="1.0" />
 			<param name="scoringThisActivityAtAll" value="false" />
 			<param name="typicalDuration" value="undefined" />
-			<param name="typicalDurationScoreComputation" value="relative" />
-		</parameterset>
+			<param name="typicalDurationScoreComputation" value="relative" /> 
+		</parameterset>-->
 		<!--<parameterset type="activityParams" >
 			<param name="activityType" value="pt interaction" />
 			<param name="closingTime" value="undefined" />
@@ -264,7 +264,7 @@
 
 	<module name="subtourModeChoice" >
 		<param name="chainBasedModes" value="car" />
-		<param name="modes" value="car,pt,bike,walk" />
+		<param name="modes" value="car,pt,walk" />
 		<param name="considerCarAvailability" value="true" />
 	</module>
 
