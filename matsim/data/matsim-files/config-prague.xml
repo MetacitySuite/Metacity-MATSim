@@ -53,7 +53,7 @@
 	</module>
 
 	<module name="plans">
-		<param name="inputPlansFile" value="./input/population-10pct.xml" />
+		<param name="inputPlansFile" value="./input/population.xml.gz" />
 	</module>
 
 	<module name="transit" >
