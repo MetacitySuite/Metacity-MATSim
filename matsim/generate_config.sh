@@ -1,6 +1,6 @@
 #!/bin/bash
 
-property_file="../utility/matsim/matsim-config/properties-config-run.json"
+property_file="matsim-config-properties-run.json"
 config_file="data/matsim-files/config-prague.xml"
 
 #if [ "$#" -ne 2 ]; then

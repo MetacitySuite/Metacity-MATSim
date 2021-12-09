@@ -42,7 +42,7 @@ public class DownsamplePopulation {
         try (FileInputStream fis = new FileInputStream(configPropertiesFile)) {
             prop.load(fis);
         } catch (FileNotFoundException ex) {
-            System.out.println("Config file not found.");
+            System.out.println("config.properties file not found.");
         } catch (IOException ex) {
             System.out.println("Error");
         }
