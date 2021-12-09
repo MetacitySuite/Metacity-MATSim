@@ -321,6 +321,7 @@ matsim/data/matsim-files-test
 matsim/data/matsim-testing-files
 matsim/data/prague-data
 matsim/data/templates
+matsim/data/matsim-files/*-run.xml
 matsim/.idea
 matsim/.classpath
 matsim/.settings
