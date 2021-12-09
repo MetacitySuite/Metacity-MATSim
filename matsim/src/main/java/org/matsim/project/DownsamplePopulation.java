@@ -17,9 +17,10 @@ import java.util.Properties;
 import java.util.Random;
 public class DownsamplePopulation {
     private static final double DOWNSAMPLE_FACTOR = 0.1;
-    private static final String dir = "data/matsim-files/";
-    private static final String matsimConfigFile = dir + "config-prague.xml";
-    private static final String matsimOutputFilesDir = "input/";
+    /**
+     * Configuration file containing various file names and data directories
+     */
+    public static final String configPropertiesFile = "resources/config.properties";
 
     public static void Downsample(final Map<Id<Person>, ? extends Person> map, final double sample ){
         final Random rnd = MatsimRandom.getLocalInstance();
@@ -27,13 +28,6 @@ public class DownsamplePopulation {
         map.values().removeIf( person -> rnd.nextDouble() > sample ) ;
         System.out.println("(warn) Population downsampled to " + map.size() + " agents.");
     }
-
-    /*public static Scenario DownsamplePopulation(Config config){
-    //Config config = ConfigUtils.loadConfig(matsimConfigFile);
-    final Scenario scenario = ScenarioUtils.loadScenario(config);
-    Downsample(scenario.getPopulation().getPersons(), DOWNSAMPLE_FACTOR);
-    return scenario;
-    }*/
 
     public static void main(String[] args){
         double sampleFactor = DOWNSAMPLE_FACTOR;
@@ -43,13 +37,27 @@ public class DownsamplePopulation {
             sampleFactor = Double.parseDouble(args[0]);
         }
 
+        //process config properties file
+        Properties prop = new Properties();
+        try (FileInputStream fis = new FileInputStream(configPropertiesFile)) {
+            prop.load(fis);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Config file not found.");
+        } catch (IOException ex) {
+            System.out.println("Error");
+        }
+
+        String matsimConfigFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimConfigFilesFolder");
+        String matsimConfigFile = matsimConfigFilesDir + prop.getProperty("matsimConfigFile");
+        String matsimOutputFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimOutputFilesFolder");
+
         Config config = ConfigUtils.loadConfig(matsimConfigFile);
         Scenario scenario = ScenarioUtils.loadScenario(config);
         Downsample(scenario.getPopulation().getPersons(), sampleFactor);
 
         //write downsampled population file
         int percent = (int)(sampleFactor * 100);
-        String outputPopulationFile = dir + matsimOutputFilesDir + "population-" + Integer.toString(percent) + "pct.xml";
+        String outputPopulationFile = matsimOutputFilesDir + "population-" + Integer.toString(percent) + "pct.xml";
         Population pop = scenario.getPopulation();
         new PopulationWriter(pop).write(outputPopulationFile);
     }

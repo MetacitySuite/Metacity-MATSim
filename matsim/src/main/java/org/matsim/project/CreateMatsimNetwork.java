@@ -34,7 +34,7 @@ public class CreateMatsimNetwork {
     /**
      * Configuration file containing various file names and data directories
      */
-    public static final String configFile = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/resources/config.properties";
+    public static final String configPropertiesFile = "resources/config.properties";
 
     public static String dataDir;
 
@@ -144,7 +144,7 @@ public class CreateMatsimNetwork {
 
     public static void main(String[] args)  {
         Properties prop = new Properties();
-        try (FileInputStream fis = new FileInputStream(configFile)) {
+        try (FileInputStream fis = new FileInputStream(configPropertiesFile)) {
             prop.load(fis);
         } catch (FileNotFoundException ex) {
             System.out.println("Config file not found.");
@@ -152,7 +152,7 @@ public class CreateMatsimNetwork {
             System.out.println("Error");
         }
 
-        dataDir = prop.getProperty("dataDir") + prop.getProperty("dataFolder");
+        dataDir = prop.getProperty("dataDir") + prop.getProperty("geoDataFolder");
         matsimOutputFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimOutputFilesFolder");
         matsimConfigFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimConfigFilesFolder");
 

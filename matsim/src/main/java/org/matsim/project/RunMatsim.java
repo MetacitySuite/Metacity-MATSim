@@ -59,7 +59,6 @@ public class RunMatsim{
 
 		//controler
 		config.controler().setOverwriteFileSetting( OverwriteFileSetting.deleteDirectoryIfExists );
-		// clearModeRoutingParams(true) --??
 
 		Scenario scenario = ScenarioUtils.loadScenario(config) ;
 

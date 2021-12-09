@@ -11,6 +11,6 @@
 		"numberOfThreads": "4"
 	},
 	"plans": {
-		"inputPlansFile": "./input/population.xml.gz"
+		"inputPlansFile": "./input/population-10pct.xml"
 	}
 }
