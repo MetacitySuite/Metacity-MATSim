@@ -21,7 +21,7 @@
 		an artificial link is created. If travelCostType is travelTime, minTravelCost is the travel time
 		between stops from the schedule. If travelCostType is 
 		linkLength minTravel cost is the beeline distance. -->
-		<param name="maxTravelCostFactor" value="5.0" />
+		<param name="maxTravelCostFactor" value="6.0" />
 		<!-- All links that do not have a transit route on them are removed, except the ones 
 		listed in this set (typically only car). Separated by comma. -->
 		<param name="modesToKeepOnCleanUp" value="car" />
