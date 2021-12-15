@@ -23,12 +23,14 @@ def main():
         route_id.append(route)
 
     subway = ["L991", "L992", "L993"]
+    ferry = ["L1801", "L1802","L1803","L1804","L1805","L1806","L1807"]
 
     for x in np.arange(901,917):
         route = "L" + str(x)
         route_id.append(route)
 
-    route_id = route_id + subway
+    route_id = route_id + subway + ferry
+    
 
     print("Processing routes.txt...")
     df_routes = pd.read_csv(routes, dtype=str)
