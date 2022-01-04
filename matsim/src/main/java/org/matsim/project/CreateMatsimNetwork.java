@@ -12,11 +12,14 @@ import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
 import org.matsim.core.network.NetworkUtils;
 import org.matsim.core.network.io.MatsimNetworkReader;
+import org.matsim.core.network.algorithms.MultimodalNetworkCleaner;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Properties;
+import java.util.Set;
 
 import org.matsim.core.population.PopulationUtils;
 import org.matsim.core.utils.geometry.geotools.MGC;
@@ -71,6 +74,24 @@ public class CreateMatsimNetwork {
         String converterConfigFile = matsimConfigFilesDir + prop.getProperty("osmConverterConfigFile");
         //multimodal network
         ConvertOSM2MultimodalNetwork(converterConfigFile);
+    }
+
+    /**
+     * Cleans unmapped multimodal network created from OSM
+     * @param prop
+     */
+    public static void CleanNetwork(Properties prop){
+        String epsg = prop.getProperty("intermediateEPSG");
+        String networkFile = matsimOutputFilesDir + prop.getProperty("networkOutputFile");
+        Network network = NetworkUtils.createNetwork();
+        new MatsimNetworkReader(epsg, epsg, network).readFile(networkFile);
+        Set<String> modes = new HashSet<>();
+        modes.add("car");
+        modes.add("bus");
+        new MultimodalNetworkCleaner(network).run(modes);
+
+        //String newNetworkFile = matsimOutputFilesDir + prop.getProperty("cleanedNetworkOutputFile");
+        new NetworkWriter(network).write(networkFile);
     }
 
     /**
@@ -156,25 +177,30 @@ public class CreateMatsimNetwork {
         matsimOutputFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimOutputFilesFolder");
         matsimConfigFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimConfigFilesFolder");
 
-        //Create a dummy population file to be able to process config
+        //1. Create a dummy population file to be able to process config
         CreateDummyPopulationFile(prop);
 
-        // Open the createOsmConfigFile Config and set the parameters to the required values (usually done manually by opening the config with a simple editor)
+        // 1.5 Open the createOsmConfigFile Config and set the parameters to the required values (usually done manually by opening the config with a simple editor)
         // Define a wayDefaultParams section, which converts "railway=tram" OSM links to "tram" MATSim links.
-        // By default there is a block that converts them to MATSim "rail" links, so you can simply change this value.
+        // By default, there is a block that converts them to MATSim "rail" links, so you can simply change this value.
         // <param name="allowedTransportModes" value="tram" />
         // UNCOMMENT if you want to create a new config file
         //PrepareNetworkConfig(prop);
 
-        CreateNetwork(prop); //Creates multimodal network
+        //2. Creates multimodal network
+        CreateNetwork(prop);
 
-        //get unmapped PT schedule from GTFS
+        //2.5 Clean the network if problems occur - GENERALLY NOT NEEDED
+        //CleanNetwork(prop);
+
+        //3. Get unmapped PT schedule from GTFS
         PrepareGTFS(prop);
 
-        // add tram transportModeAssignment manually
+        // 3.5 add tram transportModeAssignment manually
         // UNCOMMENT if you want to create a new config file
         //PreparePublicTransportConfig(prop);
 
+        //4. Map PT to network
         MapPublicTransport(prop);
 
         //TODO: Transform to different CRS
