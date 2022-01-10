@@ -2,7 +2,7 @@
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
 	<module name="OsmConverter" >
-		<param name="osmFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/prague-data/prague4.osm" />
+		<param name="osmFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/prague-data/outtest.osm" />
 		<param name="outputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/multi-network-prague.xml.gz" />
 		<!-- Sets whether the detailed geometry of the roads should be retained in the conversion or not.
 		Keeping the detailed paths results in a much higher number of nodes and links in the resulting MATSim network.
@@ -46,7 +46,7 @@
 		</parameterset>
 
 		<!-- problem with cycleways -->
-		<!-- <parameterset type="routableSubnetwork" >
+		<!--<parameterset type="routableSubnetwork" >
 			<param name="allowedTransportModes" value="bike, car" />
 			<param name="subnetworkMode" value="bike" />
 		</parameterset> -->
@@ -136,7 +136,7 @@
 			<param name="osmValue" value="secondary_link" />
 		</parameterset>
 		<parameterset type="wayDefaultParams" >
-			<param name="allowedTransportModes" value="car" />
+			<param name="allowedTransportModes" value="car, bike" />
 			<param name="freespeed" value="6.944444444444445" />
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="600.0" />
@@ -146,7 +146,7 @@
 			<param name="osmValue" value="tertiary" />
 		</parameterset>
 		<parameterset type="wayDefaultParams" >
-			<param name="allowedTransportModes" value="car" />
+			<param name="allowedTransportModes" value="car, bike" />
 			<param name="freespeed" value="6.944444444444445" />
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="600.0" />
@@ -166,8 +166,8 @@
 			<param name="osmValue" value="unclassified" />
 		</parameterset>
 		<parameterset type="wayDefaultParams" >
-			<param name="allowedTransportModes" value="car" />
-			<param name="freespeed" value="6.944444444444445" />
+			<param name="allowedTransportModes" value="car, bike" />
+			<param name="freespeed" value="4.166666666666667" />
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="600.0" />
 			<param name="lanes" value="1.0" />
@@ -176,8 +176,8 @@
 			<param name="osmValue" value="residential" />
 		</parameterset>
 		<parameterset type="wayDefaultParams" >
-			<param name="allowedTransportModes" value="car" />
-			<param name="freespeed" value="6.944444444444445" />
+			<param name="allowedTransportModes" value="car, bike" />
+			<param name="freespeed" value="2.7777777777777777" />
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="300.0" />
 			<param name="lanes" value="1.0" />
@@ -219,7 +219,7 @@
 
 		<parameterset type="wayDefaultParams" >
 			<param name="allowedTransportModes" value="bike" />
-			<param name="freespeed" value="6.944444444444445" />
+			<param name="freespeed" value="5.5555555" />
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="9999.0" />
 			<param name="lanes" value="1.0" />
@@ -227,9 +227,10 @@
 			<param name="osmKey" value="highway" />
 			<param name="osmValue" value="cycleway" />
 		</parameterset>
+
 		<parameterset type="wayDefaultParams" >
 			<param name="allowedTransportModes" value="bike" />
-			<param name="freespeed" value="6.944444444444445" />
+			<param name="freespeed" value="5.5555555" />
 			<param name="freespeedFactor" value="1.0" />
 			<param name="laneCapacity" value="9999.0" />
 			<param name="lanes" value="1.0" />
@@ -238,4 +239,5 @@
 			<param name="osmValue" value="path" />
 		</parameterset>
 	</module>
+
 </config>

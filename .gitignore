@@ -336,3 +336,4 @@ utility/matsim/performance-testing/outputs
 utility/gtfs/data/
 utility/gtfs/output/
 utility/osm/data/
+utility/osm/*.osm

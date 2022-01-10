@@ -61,7 +61,7 @@ public class CreateMatsimNetwork {
         String converterConfigFile = matsimConfigFilesDir + prop.getProperty("osmConverterConfigFile");
         String inputOSMFile = dataDir + prop.getProperty("osmFile");
         String networkOutputFile = matsimOutputFilesDir + prop.getProperty("networkOutputFile");
-        String epsg = prop.getProperty("intermediateEPSG");
+        String epsg = prop.getProperty("epsg");
 
         PrepareConfiguration(converterConfigFile, inputOSMFile, networkOutputFile, epsg);
     }
@@ -81,13 +81,14 @@ public class CreateMatsimNetwork {
      * @param prop
      */
     public static void CleanNetwork(Properties prop){
-        String epsg = prop.getProperty("intermediateEPSG");
+        String epsg = prop.getProperty("epsg");
         String networkFile = matsimOutputFilesDir + prop.getProperty("networkOutputFile");
         Network network = NetworkUtils.createNetwork();
         new MatsimNetworkReader(epsg, epsg, network).readFile(networkFile);
         Set<String> modes = new HashSet<>();
         modes.add("car");
         modes.add("bus");
+        modes.add("bike");
         new MultimodalNetworkCleaner(network).run(modes);
 
         //String newNetworkFile = matsimOutputFilesDir + prop.getProperty("cleanedNetworkOutputFile");
@@ -101,7 +102,7 @@ public class CreateMatsimNetwork {
     public static void PrepareGTFS(Properties prop){
         String gtfsDir = dataDir + prop.getProperty("gtfsFolder");
         String sampleDay = prop.getProperty("gtfsSampleDay");
-        String epsg = prop.getProperty("intermediateEPSG");
+        String epsg = prop.getProperty("epsg");
 
         String unmappedScheduleFile = matsimOutputFilesDir + prop.getProperty("unmappedScheduleFile");
         String transitVehicleFile = matsimOutputFilesDir + prop.getProperty("transitVehicleFile");
@@ -143,7 +144,7 @@ public class CreateMatsimNetwork {
      */
     public static void TransformNetworkToKrovak(Properties prop){
         String networkFile = matsimOutputFilesDir + prop.getProperty("mappedNetworkFile");
-        String epsg = prop.getProperty("intermediateEPSG");
+        String epsg = prop.getProperty("epsg");
         String newNetworkFile = matsimOutputFilesDir + prop.getProperty("transformedMappedNetworkFile");
 
         //read and transform to a new coordinate system
@@ -191,7 +192,7 @@ public class CreateMatsimNetwork {
         CreateNetwork(prop);
 
         //2.5 Clean the network if problems occur - GENERALLY NOT NEEDED
-        //CleanNetwork(prop);
+        CleanNetwork(prop);
 
         //3. Get unmapped PT schedule from GTFS
         PrepareGTFS(prop);
