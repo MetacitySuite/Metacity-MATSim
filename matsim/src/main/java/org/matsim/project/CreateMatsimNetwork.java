@@ -179,7 +179,7 @@ public class CreateMatsimNetwork {
         matsimConfigFilesDir = prop.getProperty("dataDir") + prop.getProperty("matsimConfigFilesFolder");
 
         //1. Create a dummy population file to be able to process config
-        CreateDummyPopulationFile(prop);
+        //CreateDummyPopulationFile(prop);
 
         // 1.5 Open the createOsmConfigFile Config and set the parameters to the required values (usually done manually by opening the config with a simple editor)
         // Define a wayDefaultParams section, which converts "railway=tram" OSM links to "tram" MATSim links.
@@ -189,10 +189,10 @@ public class CreateMatsimNetwork {
         //PrepareNetworkConfig(prop);
 
         //2. Creates multimodal network
-        CreateNetwork(prop);
+        //CreateNetwork(prop);
 
         //2.5 Clean the network if problems occur - GENERALLY NOT NEEDED
-        CleanNetwork(prop);
+        //CleanNetwork(prop);
 
         //3. Get unmapped PT schedule from GTFS
         PrepareGTFS(prop);

@@ -12,9 +12,9 @@
 	<!-- =================================================================================================================================== -->
 
 	<module name="controler">
-		<param name="outputDirectory" value="./output/pop10pct-200it" />
+		<param name="outputDirectory" value="./output/pop10pct-10it" />
 		<param name="firstIteration" value="0" />
-		<param name="lastIteration" value="200" />
+		<param name="lastIteration" value="10" />
 		<param name="compressionType" value="gzip" />
 		<param name="dumpDataAtEnd" value="true" />
 		<!-- The type of routing (least cost path) algorithm used, may have the values: [Dijkstra, AStarLandmarks, FastDijkstra, FastAStarLandmarks, SpeedyALT] -->

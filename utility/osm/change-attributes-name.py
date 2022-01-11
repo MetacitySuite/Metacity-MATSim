@@ -7,7 +7,7 @@ parser.add_argument('-o', '--outfile', dest='outfile', type=str, help='Path to o
 
 node_attrib = ['timestamp', 'user', 'actor']
 
-if __name__ == '__main__':
+def main():
     args = parser.parse_args()
     infile = args.infile
     outfile = args.outfile
@@ -42,4 +42,9 @@ if __name__ == '__main__':
                 del way_el.attrib[at]
         
     tree.write(outfile, encoding="UTF-8", xml_declaration=False)
+
+
+
+if __name__ == '__main__':
+    main()
 

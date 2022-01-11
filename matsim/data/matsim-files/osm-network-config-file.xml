@@ -2,8 +2,8 @@
 <!DOCTYPE config SYSTEM "http://www.matsim.org/files/dtd/config_v2.dtd">
 <config>
 	<module name="OsmConverter" >
-		<param name="osmFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/prague-data/prague2.osm" />
-		<param name="outputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/multi-network-prague.xml.gz" />
+		<param name="osmFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/prague-data/prague_11_1_2022.osm" />
+		<param name="outputNetworkFile" value="/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/input/01-multi-network-prague.xml.gz" />
 		<!-- Sets whether the detailed geometry of the roads should be retained in the conversion or not.
 		Keeping the detailed paths results in a much higher number of nodes and links in the resulting MATSim network.
 		Not keeping the detailed paths removes all nodes where only one road passes through, thus only real intersections

@@ -2,23 +2,39 @@ import pandas as pd
 import numpy as np
 import os
 from shutil import copyfile
+from argparse import ArgumentParser
 
-gtfs_dir = "data/PID_GTFS_1_11_2021/"
-filtered_gtfs_dir = "output/PID_GTFS_1_11_2021_filtered/"
+#gtfs_dir = "data/PID_GTFS_11_1_2022/"
+#filtered_gtfs_dir = "output/PID_GTFS_11_1_2022_filtered/"
 
 modified_files = ["routes.txt", "trips.txt", "stop_times.txt", "stops.txt", "route_stops.txt", "shapes.txt"]
 
-routes = gtfs_dir + "routes.txt"
-trips = gtfs_dir + "trips.txt"
-stop_times = gtfs_dir + "stop_times.txt"
-stops = gtfs_dir + "stops.txt"
-route_stops = gtfs_dir + "route_stops.txt"
-shapes = gtfs_dir + "shapes.txt"
-
 def main():
+    parser = ArgumentParser(description="Filter routes in GTFS by route_id.")
+    parser.add_argument('gtfs_dir', help='Unzipped GTFS folder to be changed')
+    parser.add_argument('-o', '--outgtfs', dest='filtered_gtfs_dir', type=str, help='Path to write output GTFS folder')
+
+    args = parser.parse_args()
+    gtfs_dir = args.gtfs_dir
+    filtered_gtfs_dir = args.filtered_gtfs_dir
+
+    if not gtfs_dir.endswith("/"):
+        gtfs_dir = gtfs_dir + "/"
+    if not filtered_gtfs_dir.endswith("/"):
+        filtered_gtfs_dir = filtered_gtfs_dir + "/"
+
+    routes = gtfs_dir + "routes.txt"
+    trips = gtfs_dir + "trips.txt"
+    stop_times = gtfs_dir + "stop_times.txt"
+    stops = gtfs_dir + "stops.txt"
+    route_stops = gtfs_dir + "route_stops.txt"
+    shapes = gtfs_dir + "shapes.txt"
+
     route_id = []
 
     for x in range(300):
+        if x == 235:
+            continue
         route = "L" + str(x)
         route_id.append(route)
 
@@ -79,7 +95,7 @@ def main():
     #copy unmodified GTFS files
     for f in os.listdir(gtfs_dir):
         if f not in modified_files:
-            copyfile(gtfs_dir + "/" + f, filtered_gtfs_dir + "/" + f)
+            copyfile(gtfs_dir + f, filtered_gtfs_dir + f)
 
 if __name__ == "__main__":
     main()
