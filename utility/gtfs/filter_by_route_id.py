@@ -8,6 +8,7 @@ from argparse import ArgumentParser
 #filtered_gtfs_dir = "output/PID_GTFS_11_1_2022_filtered/"
 
 modified_files = ["routes.txt", "trips.txt", "stop_times.txt", "stops.txt", "route_stops.txt", "shapes.txt"]
+delete_routes = [235]
 
 def main():
     parser = ArgumentParser(description="Filter routes in GTFS by route_id.")
@@ -33,7 +34,7 @@ def main():
     route_id = []
 
     for x in range(300):
-        if x == 235:
+        if x in delete_routes:
             continue
         route = "L" + str(x)
         route_id.append(route)

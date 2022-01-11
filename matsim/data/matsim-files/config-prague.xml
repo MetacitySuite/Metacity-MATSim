@@ -43,6 +43,9 @@
 		<param name="storageCapacityFactor" value="0.18" /> <!-- flowCapacityFactor^(0.75) probably-->
 		<param name="snapshotperiod"  value = "5:00:00"/> <!-- 00:00:00 means NO snapshot writing -->
 		<param name="mainMode" value="car" /> <!-- uses routing in qsim! -->
+		<!-- https://matsim.atlassian.net/wiki/spaces/MATPUB/pages/84246576/Mixed+traffic -->
+		<param name="linkDynamics" value= "PassingQ" /> <!-- in FIFO fast vehicles (e.g. car) cannot pass slower vehicle (e.g. bike), enable passing-->
+		<param name="trafficDynamics" value="queue" />
 		<param name="numberOfThreads" value="2" /> <!-- Parallel QSim -->
 	</module>
 
@@ -105,80 +108,82 @@
 		<param name="waitingPt" value="-0.5" />
 
 		<!-- ================================================================================== -->
-		<parameterset type="modeParams" >
-			<param name="mode" value="car" />
-			<param name="constant" value="-1.0" /> <!-- alternative-specific constants to calibrate modal splits -->
-			<param name="dailyUtilityConstant" value="0.0" />
-			<param name="marginalUtilityOfDistance_util_m" value="0.0" />
-			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
-			<param name="monetaryDistanceRate" value="-0.0002" /> <!-- has to be negative -->
-			<param name="dailyMonetaryConstant" value="-5.3" />
-		</parameterset>
-		<parameterset type="modeParams" >
-			<param name="mode" value="pt" />
-			<param name="constant" value="-0.3" />
-			<param name="marginalUtilityOfDistance_util_m" value="0.0" />
-			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
-			<param name="monetaryDistanceRate" value="0.0" />
-			<param name="dailyMonetaryConstant" value="-2.1" />
-		</parameterset>
-		<parameterset type="modeParams" >
-			<param name="mode" value="walk" />
-			<param name="constant" value="0.0" />
-			<param name="marginalUtilityOfDistance_util_m" value="0.0" />
-			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
-			<param name="monetaryDistanceRate" value="0.0" />
-		</parameterset>
-		<parameterset type="modeParams" >
-			<param name="mode" value="bike" />
-			<param name="constant" value="-1.8" />
-			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
-		</parameterset>
-		<parameterset type="modeParams" >
-			<param name="mode" value="car_passenger" />
-			<param name="constant" value="-1.0" />
-			<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
-		</parameterset>
-		<!-- ================================================================================== -->
+		<parameterset type="scoringParameters">
+			<parameterset type="modeParams" >
+				<param name="mode" value="car" />
+				<param name="constant" value="-1.0" /> <!-- alternative-specific constants to calibrate modal splits -->
+				<param name="dailyUtilityConstant" value="0.0" />
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+				<param name="monetaryDistanceRate" value="-0.0002" /> <!-- has to be negative -->
+				<param name="dailyMonetaryConstant" value="-5.3" />
+			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="mode" value="pt" />
+				<param name="constant" value="-0.3" />
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+				<param name="monetaryDistanceRate" value="0.0" />
+				<param name="dailyMonetaryConstant" value="-2.1" />
+			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="mode" value="walk" />
+				<param name="constant" value="0.0" />
+				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+				<param name="monetaryDistanceRate" value="0.0" />
+			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="mode" value="bike" />
+				<param name="constant" value="-1.8" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+			</parameterset>
+			<parameterset type="modeParams" >
+				<param name="mode" value="car_passenger" />
+				<param name="constant" value="-1.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
+			</parameterset>
+			<!-- ================================================================================== -->
 
-		<!-- Activity parameters are described for every activity in plans (population)!-->
-		<parameterset type="activityParams" >
-			<param name="activityType"    value="home" />
-			<param name="priority"        value="1" />
-			<param name="typicalDuration" value="12:00:00" />
-		</parameterset>
-		<parameterset type="activityParams" >
-			<param name="activityType"    value="work" />
-			<param name="priority"        value="1" />
-			<param name="typicalDuration" value="08:00:00" />
-			<param name="openingTime"     value="07:00:00" />
-			<param name="latestStartTime" value="13:00:00" />
-			<param name="earliestEndTime" value="6:00:00" />
-			<param name="closingTime"     value="22:00:00" />
-		</parameterset>
-		<parameterset type="activityParams" >
-			<param name="activityType"    value="education" />
-			<param name="priority"        value="1" />
-			<param name="typicalDuration" value="06:00:00" />
-			<param name="openingTime"     value="07:00:00" />
-			<param name="latestStartTime" value="13:00:00" />
-			<param name="earliestEndTime" value="6:00:00" />
-			<param name="closingTime"     value="22:00:00" />
-		</parameterset>
+			<!-- Activity parameters are described for every activity in plans (population)!-->
+			<parameterset type="activityParams" >
+				<param name="activityType"    value="home" />
+				<param name="priority"        value="1" />
+				<param name="typicalDuration" value="12:00:00" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType"    value="work" />
+				<param name="priority"        value="1" />
+				<param name="typicalDuration" value="08:00:00" />
+				<param name="openingTime"     value="07:00:00" />
+				<param name="latestStartTime" value="13:00:00" />
+				<param name="earliestEndTime" value="6:00:00" />
+				<param name="closingTime"     value="22:00:00" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType"    value="education" />
+				<param name="priority"        value="1" />
+				<param name="typicalDuration" value="06:00:00" />
+				<param name="openingTime"     value="07:00:00" />
+				<param name="latestStartTime" value="13:00:00" />
+				<param name="earliestEndTime" value="6:00:00" />
+				<param name="closingTime"     value="22:00:00" />
+			</parameterset>
 
-		<!-- TODO -->
-		<parameterset type="activityParams" >
-			<!-- pt interaction, ... -->
-			<param name="activityType" value="car interaction" />
-			<param name="closingTime" value="undefined" />
-			<param name="earliestEndTime" value="undefined" />
-			<param name="latestStartTime" value="undefined" />
-			<param name="minimalDuration" value="undefined" />
-			<param name="openingTime" value="undefined" />
-			<param name="priority" value="1.0" />
-			<param name="scoringThisActivityAtAll" value="true" />
-			<param name="typicalDuration" value="00:00:30" />
-			<param name="typicalDurationScoreComputation" value="relative" />
+			<!-- TODO -->
+			<parameterset type="activityParams" >
+				<!-- pt interaction, ... -->
+				<param name="activityType" value="car interaction" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<param name="typicalDuration" value="00:00:30" />
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
 		</parameterset>
 	</module>
 
