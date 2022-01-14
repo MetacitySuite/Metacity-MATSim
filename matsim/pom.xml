@@ -15,13 +15,13 @@
 
 		<!-- MATSim versions: https://repo.matsim.org/#browse/browse:matsim:org%2Fmatsim%2Fcontrib%2F14.0-2021w39 -->
 		<!-- release -->
-		<!-- <matsim.version>13.0</matsim.version> -->
+		<matsim.version>14.0</matsim.version>
 
 		<!-- snapshot -->
 		<!--<matsim.version>14.0-SNAPSHOT</matsim.version> -->
 
 		<!-- weekly release -->
-		<matsim.version>14.0-PR1706</matsim.version>
+		<!-- <matsim.version>14.0-PR1706</matsim.version> -->
 
 		<!-- <matsim.contrib.version>14.0-2021w39</matsim.contrib.version> -->
 

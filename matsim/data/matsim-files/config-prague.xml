@@ -139,7 +139,7 @@
 				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
 			</parameterset>
 			<parameterset type="modeParams" >
-				<param name="mode" value="car_passenger" />
+				<param name="mode" value="ride" /> <!-- car_passenger -->
 				<param name="constant" value="-1.0" />
 				<param name="marginalUtilityOfTraveling_util_hr" value="0.0" />
 			</parameterset>
@@ -207,7 +207,7 @@
 		</parameterset>
 		<parameterset type="teleportedModeParameters" > <!-- teleportation setting -->
 			<param name="beelineDistanceFactor" value="null" />
-			<param name="mode" value="car_passenger" />
+			<param name="mode" value="ride" /> <!-- car_passenger -->
 			<!-- generates a “teleportation” route whose travel distance is the same as, and travel time is 1.0 that of, a freespeed car route -->
 			<param name="teleportedModeFreespeedFactor" value="1.3" />
 		</parameterset>
@@ -225,12 +225,12 @@
 		<param name="useCapacityConstraints" value="true" />
 	</module>
 
-	<module name="ptCounts" >
+	<module name="ptCounts" > <!-- TODO -->
 		<!-- factor by which to re-scale the simulated values.  necessary when simulation runs with something different from 100%.  needs to be adapted manually -->
 		<param name="countsScaleFactor" value="0.1" />
 	</module>
 
-	<module name="counts">
+	<module name="counts"> <!-- TODO -->
 		<!-- Transport modes that will be respected for the counts comparison. 'car' is default, which includes also bussed from the pt simulation module. Use this parameter in combination with 'filterModes' = true! -->
 		<param name="analyzedModes" value="pt,car" />
 		<!-- Specifies over how many iterations the link volumes should be averaged that are used for the counts comparison. Use 1 or 0 to only use the link volumes of a single iteration. This values cannot be larger than the value specified for writeCountsInterval -->
@@ -293,7 +293,7 @@
 		<!-- modes preserving mass -->
 		<param name="chainBasedModes" value="car" />
 		<!-- leg modes that can be switched to -->
-		<param name="modes" value="car,pt,walk" />
+		<param name="modes" value="car,pt,walk,bike" />
 		<!-- the attribute carAvail/drivingLicense must be specified in the plans.xml file -->
 		<param name="considerCarAvailability" value="true" />
 	</module>
