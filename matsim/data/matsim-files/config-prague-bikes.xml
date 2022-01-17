@@ -14,7 +14,7 @@
 	<module name="controler">
 		<param name="outputDirectory" value="./output/pop10pct-10it-bikes" />
 		<param name="firstIteration" value="0" />
-		<param name="lastIteration" value="10" />
+		<param name="lastIteration" value="1" />
 		<param name="compressionType" value="gzip" />
 		<param name="dumpDataAtEnd" value="true" />
 		<!-- The type of routing (least cost path) algorithm used, may have the values: [Dijkstra, AStarLandmarks, FastDijkstra, FastAStarLandmarks, SpeedyALT] -->
@@ -47,6 +47,7 @@
 		<param name="trafficDynamics" value="queue" />
 		<param name="usePersonIdForMissingVehicleId" value= "true" /> <!-- default = true -->
 		<param name="numberOfThreads" value="2" /> <!-- Parallel QSim -->
+		<param name="vehiclesSource" value="modeVehicleTypesFromVehiclesData" /> <!-- or 'fromVehiclesData'-->
 	</module>
 
 	<!-- =================================================================================================================================== -->

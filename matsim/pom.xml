@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.matsim</groupId>
 	<artifactId>matsim</artifactId>
-	<version>14.0-v1.0.0-SNAPSHOT</version>
+	<version>13.0-v1.0.0-SNAPSHOT</version>
 
 	<name>MATSim project</name>
 	<description>MATSim project</description>
@@ -15,7 +15,7 @@
 
 		<!-- MATSim versions: https://repo.matsim.org/#browse/browse:matsim:org%2Fmatsim%2Fcontrib%2F14.0-2021w39 -->
 		<!-- release -->
-		<matsim.version>14.0</matsim.version>
+		<matsim.version>13.0</matsim.version>
 
 		<!-- snapshot -->
 		<!--<matsim.version>14.0-SNAPSHOT</matsim.version> -->
