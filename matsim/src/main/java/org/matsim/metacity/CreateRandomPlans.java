@@ -33,7 +33,7 @@ import java.util.*;
 public class CreateRandomPlans {
     /*Edit if necessary*/
     private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
-    private static final String matsimConfigFile = dir + "config-prague.xml";
+    private static final String matsimConfigFile = dir + "config.xml";
     private static final String networkFile = dir + "input/pt-network-prague.xml.gz";
     private static final int demandSize = 1000; //population size, usually 10% of real population size is enough
     private static final double radius = 5000;

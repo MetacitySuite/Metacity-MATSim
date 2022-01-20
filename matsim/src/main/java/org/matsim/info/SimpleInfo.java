@@ -9,8 +9,8 @@ import org.matsim.core.scenario.ScenarioUtils;
 
 
 public class SimpleInfo {
-    private static final String dir = "/home/metakocour/IdeaProjects/matsim-example-project/scenarios/test-prague/";
-    private static final String matsimConfigFile = dir + "config-prague.xml";
+    private static final String dir = "/home/metakocour/IdeaProjects/Metacity-MATSim/matsim/data/matsim-files/";
+    private static final String matsimConfigFile = dir + "config.xml";
 
     private static final Config config = ConfigUtils.loadConfig(matsimConfigFile);
     private static final Scenario scenario = ScenarioUtils.loadScenario(config);

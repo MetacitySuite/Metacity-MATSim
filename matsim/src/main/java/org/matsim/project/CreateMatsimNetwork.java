@@ -204,7 +204,7 @@ public class CreateMatsimNetwork {
         //4. Map PT to network
         MapPublicTransport(prop);
 
-        //TODO: Transform to different CRS
+        //TODO: Transform to different CRS if needed
         //TransformNetworkToKrovak(prop);
     }
 }
