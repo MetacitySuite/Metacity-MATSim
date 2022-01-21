@@ -40,7 +40,7 @@
 		<param name="endTime" value="30:00:00" />
 		<param name="flowCapacityFactor" value="0.1" /> <!-- simulating 10% population sample -->
 		<!-- https://github.com/matsim-org/matsim-code-examples/wiki/faq-48955430 -->
-		<param name="storageCapacityFactor" value="0.18" /> <!-- flowCapacityFactor^(0.75) probably-->
+		<param name="storageCapacityFactor" value="0.2" /> <!-- flowCapacityFactor^(0.75) probably-->
 		<param name="snapshotperiod"  value = "5:00:00"/> <!-- 00:00:00 means NO snapshot writing -->
 		<param name="mainMode" value="car,bike" /> <!-- uses routing in qsim! -->
 		<param name="linkDynamics" value= "PassingQ" /> <!-- in FIFO fast vehicles (e.g. car) cannot pass slower vehicle (e.g. bike), enable passing-->
@@ -140,6 +140,7 @@
 				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
 				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
 				<param name="monetaryDistanceRate" value="0.0" />
+				<param name="dailyMonetaryConstant" value="-0.5" />
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="mode" value="ride" /> <!-- car_passenger -->
@@ -296,7 +297,7 @@
 		<!-- modes preserving mass -->
 		<param name="chainBasedModes" value="car" />
 		<!-- leg modes that can be switched to -->
-		<param name="modes" value="car,pt,walk,bike" />
+		<param name="modes" value="car,pt,walk" />
 		<!-- the attribute carAvail/drivingLicense must be specified in the plans.xml file -->
 		<param name="considerCarAvailability" value="true" />
 	</module>
