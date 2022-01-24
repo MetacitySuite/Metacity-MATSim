@@ -48,6 +48,7 @@
 		<param name="usePersonIdForMissingVehicleId" value= "true" /> <!-- default = true -->
 		<param name="numberOfThreads" value="2" /> <!-- Parallel QSim -->
 		<param name="vehiclesSource" value="modeVehicleTypesFromVehiclesData" /> <!-- or 'fromVehiclesData'-->
+		<param name="insertingWaitingVehiclesBeforeDrivingVehicles" value="true" />
 	</module>
 
 	<!-- =================================================================================================================================== -->
