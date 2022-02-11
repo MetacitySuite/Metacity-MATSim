@@ -5,7 +5,7 @@
 	<module name="global">
 		<param name="randomSeed" value="4711" />
 		<param name="coordinateSystem" value="epsg:5513" />
-		<param name="numberOfThreads" value="4" /> <!-- parallel event handling -->
+		<param name="numberOfThreads" value="16" /> <!-- parallel event handling -->
 		<param name="insistingOnDeprecatedConfigVersion" value="false" />
 	</module>
 
@@ -39,7 +39,7 @@
 	<module name="qsim">
 		<!-- "start/endTime" of MobSim (00:00:00 == take earliest activity time/ run as long as active vehicles exist) -->
 		<param name="startTime" value="00:00:00" />
-		<param name="endTime" value="48:00:00" />
+		<param name="endTime" value="30:00:00" />
 		<param name="flowCapacityFactor" value="0.1" /> <!-- simulating 10% population sample -->
 
 		<!-- https://github.com/matsim-org/matsim-code-examples/wiki/faq-48955430 -->
@@ -54,10 +54,11 @@
 		<!-- time in seconds.  Time after which the frontmost vehicle on a link is called `stuck' if it does not move. -->
 		<!-- be careful with how many % the simulation runs with -->
 		<param name="stuckTime" value="45.0" />
+		
 		<param name="removeStuckVehicles" value="false" />
 
 		<param name="usePersonIdForMissingVehicleId" value= "true" /> <!-- default = true -->
-		<param name="numberOfThreads" value="2" /> <!-- Parallel QSim -->
+		<param name="numberOfThreads" value="4" /> <!-- Parallel QSim -->
 		<param name="vehiclesSource" value="modeVehicleTypesFromVehiclesData" /> <!-- or ''-->
 		<param name="insertingWaitingVehiclesBeforeDrivingVehicles" value="true" />
 	</module>
@@ -161,9 +162,9 @@
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="mode" value="bike" />
-				<param name="constant" value="0.0" />
+				<param name="constant" value="-0.4" />
 				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
-				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-0.0" />
 				<param name="monetaryDistanceRate" value="0.0" />
 				<param name="dailyMonetaryConstant" value="-0.5" />
 			</parameterset>
@@ -256,12 +257,12 @@
 		<!-- If true, SwissRailRaptor tries to detect when agents cannot board a vehicle in the previous iteration because it is already full and tries to find an alternative route instead. -->
 		<param name="useCapacityConstraints" value="true" />
 		<param name="useModeMappingForPassengers" value="false" />
-		<param name="useRangeQuery" value="true" />
+		<param name="useRangeQuery" value="false" />
 
 		<!-- TODO -->
 		<!-- <param name="useIntermodalAccessEgress" value="true" /> -->
 		<!-- Sets whether intermodal access and egress modes are selected by least cost (default) or randomly chosen out of the available access / egress modes. -->
-		<param name="intermodalAccessEgressModeSelection" value="CalcLeastCostModePerStop" />
+		<!-- <param name="intermodalAccessEgressModeSelection" value="CalcLeastCostModePerStop" /> -->
 
 		<!--<parameterset type="intermodalAccessEgress">
 			<param name="mode" value="walk"/>

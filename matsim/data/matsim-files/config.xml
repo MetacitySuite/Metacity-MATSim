@@ -5,7 +5,7 @@
 	<module name="global">
 		<param name="randomSeed" value="4711" />
 		<param name="coordinateSystem" value="epsg:5513" />
-		<param name="numberOfThreads" value="4" /> <!-- parallel event handling -->
+		<param name="numberOfThreads" value="16" /> <!-- parallel event handling -->
 		<param name="insistingOnDeprecatedConfigVersion" value="false" />
 	</module>
 
@@ -46,7 +46,7 @@
 		<param name="linkDynamics" value= "PassingQ" /> <!-- in FIFO fast vehicles (e.g. car) cannot pass slower vehicle (e.g. bike), enable passing-->
 		<param name="trafficDynamics" value="queue" /> <!-- or kinematicWaves -->
 		<param name="usePersonIdForMissingVehicleId" value= "true" /> <!-- default = true -->
-		<param name="numberOfThreads" value="2" /> <!-- Parallel QSim -->
+		<param name="numberOfThreads" value="4" /> <!-- Parallel QSim -->
 		<!-- <param name="vehiclesSource" value="modeVehicleTypesFromVehiclesData" /> -->
 	</module>
 
@@ -137,9 +137,10 @@
 			</parameterset>
 			<parameterset type="modeParams" >
 				<param name="mode" value="bike" />
-				<param name="constant" value="0.0" />
+				<param name="constant" value="-0.4" />
 				<param name="marginalUtilityOfDistance_util_m" value="0.0" />
-				<param name="marginalUtilityOfTraveling_util_hr" value="-6.0" />
+				<param name="marginalUtilityOfTraveling_util_hr" value="-0.0" />
+				<param name="dailyMonetaryConstant" value="-0.5" />
 				<param name="monetaryDistanceRate" value="0.0" />
 			</parameterset>
 			<parameterset type="modeParams" >
